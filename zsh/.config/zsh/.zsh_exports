@@ -1,8 +1,6 @@
 export PAGER="most"
-export PATH=$PATH:~/.pub-cache/bin
 export PATH=$PATH:~/.local/bin/scripts
 export PATH=$PATH:~/.config/emacs/bin
-export PATH="$DENO_INSTALL/bin:$PATH"
 export MANPAGER="nvim +Man!"
 export EDITOR="nvim"
 export HISTCONTROL=ignoreboth
