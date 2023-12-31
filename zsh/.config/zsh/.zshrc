@@ -39,6 +39,7 @@ git_status(){
 
   if [[ "$modified" -ne 0 ]] then printf "$modified! "; else printf ""; fi
   if [[ "$untracked" -ne 0 ]] then printf "$untracked? "; else printf ""; fi
+  if [[ "$branch_is_ahead" -ne 0 ]] then printf "$branch_is_ahead* "; else printf ""; fi
   if [[ "$new_file" -ne 0 ]] then printf "$new_file+ "; else printf ""; fi
 }
 
