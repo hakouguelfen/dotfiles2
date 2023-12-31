@@ -34,9 +34,12 @@ git_status(){
 
   modified=$(echo "${STATUS}" | grep -c "modified")
   untracked=$(echo "${STATUS}" | grep -c "Untracked")
+  branch_is_ahead=$(echo "${STATUS}" | grep -c "branch is ahead")
+  new_file=$(echo "${STATUS}" | grep -c "new file")
 
-  if [[ "$modified" -ne 0 ]] then printf "$modified!"; else printf ""; fi
-  if [[ "$untracked" -ne 0 ]] then printf "$untracked!"; else printf ""; fi
+  if [[ "$modified" -ne 0 ]] then printf "$modified! "; else printf ""; fi
+  if [[ "$untracked" -ne 0 ]] then printf "$untracked? "; else printf ""; fi
+  if [[ "$new_file" -ne 0 ]] then printf "$new_file+ "; else printf ""; fi
 }
 
 git_branch(){
