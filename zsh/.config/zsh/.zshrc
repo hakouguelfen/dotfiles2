@@ -1,6 +1,3 @@
-source $HOME/.config/zsh/.zsh_aliases
-source $HOME/.config/zsh/.zsh_exports
-
 setopt autocd
 setopt PROMPT_SUBST
 
@@ -24,32 +21,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
+source $HOME/.config/zsh/.zsh_aliases
+source $HOME/.config/zsh/.zsh_exports
+source $HOME/.config/zsh/.zsh_prompt
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-git_status(){
-  STATUS="$(git status 2> /dev/null)"
-
-  if [[ $? -ne 0 ]]; then printf ""; return; fi
-
-  modified=$(echo "${STATUS}" | grep -c "modified")
-  untracked=$(echo "${STATUS}" | grep -c "Untracked")
-  branch_is_ahead=$(echo "${STATUS}" | grep -c "branch is ahead")
-  new_file=$(echo "${STATUS}" | grep -c "new file")
-
-  if [[ "$modified" -ne 0 ]] then printf "$modified! "; else printf ""; fi
-  if [[ "$untracked" -ne 0 ]] then printf "$untracked? "; else printf ""; fi
-  if [[ "$branch_is_ahead" -ne 0 ]] then printf "$branch_is_ahead* "; else printf ""; fi
-  if [[ "$new_file" -ne 0 ]] then printf "$new_file+ "; else printf ""; fi
-}
-
-git_branch(){
- git rev-parse --abbrev-ref HEAD 2> /dev/null
-}
-
-
-local top_left='%F{blue}%~'
-local bottom_left='%F{green}❯ '
-
-PROMPT=$'$top_left %F{green}$(git_branch) %F{yellow}$(git_status) \n$bottom_left'
-
