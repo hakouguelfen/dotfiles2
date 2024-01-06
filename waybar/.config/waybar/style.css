@@ -4,9 +4,6 @@
     font-size: 13px;
 }
 
-/*###################*/
-/* WORKSPACES */
-/*###################*/
 window#waybar {
     background-color: #282c34;
     color: #bbc2cf;
@@ -66,7 +63,8 @@ button:hover {
 }
 
 #workspaces button.persistent {
-    color: #bbc2cf;
+    /* color: #bbc2cf; */
+    color: #ffffff;
 }
 
 #workspaces button.active {
@@ -91,6 +89,7 @@ button:hover {
 #clock,
 #battery,
 #network,
+#language,
 #mpd {
     padding: 0 10px;
     color: #ffffff;
