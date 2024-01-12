@@ -53,32 +53,40 @@ button:hover {
 /* WORKSPACES */
 /*###################*/
 #workspaces button {
-    padding: 0 10px;
+    padding: 0px;
+    margin: 5px 4px;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
     background-color: transparent;
-    color: #ffffff;
 }
-
-#workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
-}
-
 #workspaces button.persistent {
-    /* color: #bbc2cf; */
     color: #ffffff;
 }
-
-#workspaces button.active {
-    color: rgba(242, 143, 173, 1);
-}
-
 #workspaces button.empty {
     color: #404040;
 }
-
+#workspaces button.visible {
+    color: rgba(242, 143, 173, 1);;
+    /* background: rgba(242, 143, 173, 1);; */
+    /* min-width: 60px; */
+    /* transition: all 0.3s ease-in-out; */
+}
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+    color: #eb4d4b;
+}
+#workspaces button:hover {
+    color: rgba(242, 143, 173, 1);
 }
 /*###################*/
+
+tooltip {
+    background: #1a1b26;
+    border: 1px solid #7aa2f7;
+    border-radius: 10px;
+}
+tooltip label {
+    color: #c0caf5;
+}
 
 
 #mode {

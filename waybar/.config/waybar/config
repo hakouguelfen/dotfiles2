@@ -36,19 +36,10 @@
         }
     },
 
-    "hyprland/window": {
-        "format": "👉 {class}",
-        "rewrite": {
-            "(.*) — Mozilla Firefox": "🌎 $1",
-            "(.*) - fish": "> [$1]"
-        },
-        "separate-outputs": true
-    },
-
     "hyprland/language": {
         "format": "{}",
         "format-fr": "fr 󰌌",
-        "format-ar": "Ar 󰌌",
+        "format-ar": "ar 󰌌",
         "keyboard-name": "at-translated-set-2-keyboard"
     },
 
@@ -75,7 +66,7 @@
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "WIFI: {essid}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ",
+        "format-disconnected": "Disconnected 󰖪",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
     "pulseaudio": {
