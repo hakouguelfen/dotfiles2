@@ -46,7 +46,7 @@
     /////////////////////////////////////
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%a %d %h - %H:%M}"
+        "format": "{:%d %h | %H:%M}"
     },
 
     "battery": {
