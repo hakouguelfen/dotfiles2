@@ -21,8 +21,44 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-source $HOME/.config/zsh/.zsh_aliases
-source $HOME/.config/zsh/.zsh_exports
+# My Aliases
+alias l='lsd --group-directories-first'
+alias ll='lsd -lAh --group-directories-first'
+alias cls='clear'
+alias mkdir='mkdir -pv'
+alias cat='bat'
+
+alias v='nvim'
+
+alias get='sudo pacman -S'
+alias del='sudo pacman -Rns'
+alias update='sudo pacman -Syu'
+alias updateParu='paru -Syu'
+
+alias grep='grep --color'
+
+alias rustbook='rustup doc --book'
+
+up() {
+  local d=""
+  local limit="$1"
+
+  # Default to limit of 1
+  if [ -z "$limit" ] || [ "$limit" -le 0 ]; then
+    limit=1
+  fi
+
+  for ((i = 1; i <= limit; i++)); do
+    d="../$d"
+  done
+
+  # perform cd. Show error if cd fails
+  if ! cd "$d"; then
+    echo "Couldn't go up $limit dirs."
+  fi
+}
+
 source $HOME/.config/zsh/.zsh_prompt
+source $HOME/.config/zsh/.zprofile
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
