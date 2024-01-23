@@ -51,13 +51,13 @@
 
     "battery": {
         "states": {
-            "good": 95,
             "critical": 15
         },
         "format": "{icon}",
         "tooltip-format": "capacity: {capacity}%",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
+        "format-critical": "{capacity}%  ",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
     },

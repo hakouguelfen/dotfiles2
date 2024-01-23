@@ -79,10 +79,7 @@ tooltip label {
     font-weight: bold;
 }
 
-#battery {
-    margin-right: 10px;
-}
-
+/* BATTERY */
 #battery.charging, #battery.plugged {
     color: #ffffff;
     background-color: #26A65B;
@@ -105,7 +102,6 @@ tooltip label {
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    margin: 2px 5px;
     border-radius: 5px;
 }
 
