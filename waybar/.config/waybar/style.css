@@ -32,10 +32,9 @@
     color: rgba(242, 143, 173, 1);
 }
 /*###################*/
-#window,
-#workspaces {
-    margin: 0 4px;
-    /* font-size: 96px; */
+#window {
+    margin: 40px;
+    font-size: 96px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -58,32 +57,21 @@ tooltip label {
     padding: 0.5rem 0.7rem;
 }
 
-
-#mode {
-    background-color: #64727D;
-    border-bottom: 3px solid #ffffff;
-}
-
 #clock,
 #battery,
+#pulseaudio,
 #network,
 #language {
-    padding: 0 10px;
     color: #ffffff;
     font-size: 14px;
     font-weight: bold;
-}
-#pulseaudio {
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: bold;
+    padding: 0 7px;
 }
 
 /* BATTERY */
 #battery.charging, #battery.plugged {
     color: #ffffff;
     background-color: #26A65B;
-    margin: 2px 5px;
     border-radius: 5px;
 }
 
@@ -115,13 +103,5 @@ label:focus {
 #network.disconnected {
     background-color: #f53c3c;
     color: #ffffff;
-
-    /* animation-name: blink; */
-    /* animation-duration: 0.9s; */
-    /* animation-timing-function: linear; */
-    /* animation-iteration-count: infinite; */
-    /* animation-direction: alternate-reverse; */
-
-    margin: 2px 5px;
     border-radius: 5px;
 }

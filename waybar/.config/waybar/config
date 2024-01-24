@@ -59,10 +59,10 @@
         "format-plugged": "{capacity}% ",
         "format-critical": "{capacity}%  ",
         "format-alt": "{time} {icon}",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [" ", " ", " ", " ", " "]
     },
     "network": {
-        "format-wifi": "",
+        "format-wifi": " ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "WIFI: {essid}",
         "format-linked": "{ifname} (No IP) ",
