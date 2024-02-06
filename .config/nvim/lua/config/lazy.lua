@@ -12,17 +12,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   'NeogitOrg/neogit',
   'nvim-tree/nvim-web-devicons',
-
-  -- Colorschemes
   'RRethy/nvim-base16',
-  'kyazdani42/nvim-palenight.lua',
-
   'windwp/nvim-autopairs',
   'nvim-lualine/lualine.nvim',
 
+  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   {
     'nvim-telescope/telescope.nvim',
     tag = '0.1.2',

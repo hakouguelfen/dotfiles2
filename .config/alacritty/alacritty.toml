@@ -1,7 +1,26 @@
-[bell]
-animation = "Linear"
-color = "#1e211f"
-duration = 100
+[window]
+dynamic_padding = true
+opacity = 0.9
+blur=true
+
+[window.padding]
+x = 7
+y = 7
+
+[font]
+size = 16
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.normal]
+family = "Fira Code"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
 
 [colors]
 draw_bold_text_with_bright_colors = true
@@ -28,27 +47,3 @@ unfocused_hollow = false
 [cursor.style]
 blinking = "Never"
 shape = "Underline"
-
-[font]
-size = 16
-
-[font.glyph_offset]
-x = 0
-y = 0
-
-[font.normal]
-family = "Fira Code"
-style = "Regular"
-
-[font.offset]
-x = 0
-y = 0
-
-[window]
-dynamic_padding = true
-opacity = 0.9
-blur=true
-
-[window.padding]
-x = 7
-y = 7

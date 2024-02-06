@@ -23,9 +23,8 @@ vim.keymap.set("v", 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set("x", 'p', "\"_dP")
 
 -- Lsp keymaps
+vim.keymap.set("n", "<leader>bs", "<cmd>lua vim.lsp.buf.format{async=true}<cr><cmd>w<cr>")
+vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 --vim.api.nvim_exec([[
 --  autocmd BufWritePre <buffer> LspZeroFormat
 --]], false)
-
-vim.keymap.set("n", "<leader>bs", "<cmd>lua vim.lsp.buf.format{async=true}<cr><cmd>w<cr>")
-vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")

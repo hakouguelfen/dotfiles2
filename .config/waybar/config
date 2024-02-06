@@ -38,8 +38,8 @@
 
     "hyprland/language": {
         "format": "{}",
-        "format-fr": "fr 󰌌",
-        "format-ar": "ar 󰌌",
+        "format-fr": "french 󰌌",
+        "format-ar": "󰌌 العربية",
         "keyboard-name": "at-translated-set-2-keyboard"
     },
 
