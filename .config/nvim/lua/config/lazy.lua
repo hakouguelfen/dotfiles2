@@ -16,8 +16,6 @@ local plugins = {
   'nvim-tree/nvim-web-devicons',
   'nvim-lualine/lualine.nvim',
   'onsails/lspkind.nvim',
-
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   {
     'nvim-telescope/telescope.nvim',
