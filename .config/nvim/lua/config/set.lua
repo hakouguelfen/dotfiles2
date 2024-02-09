@@ -48,7 +48,6 @@ o.history        = 50
 o.splitright     = true
 o.splitbelow     = true
 
-opt.mouse        = "a"
 opt.hlsearch     = false
 opt.incsearch    = true
 
@@ -59,3 +58,9 @@ A.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
   end,
 })
+
+-- Folding mechanism
+opt.fillchars = { fold = " " }
+opt.foldmethod = "indent"
+opt.foldenable = false
+opt.foldlevel = 99

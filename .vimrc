@@ -1,5 +1,4 @@
 let mapleader=" "
-
 if has('termguicolors')
   set termguicolors
 endif
@@ -22,15 +21,42 @@ set incsearch
 set clipboard+=unnamedplus
 set wildmode=longest,list,full
 set scrolloff=4
+set path+=**
+set wildmenu
 
 " toggle cursor [Normal/Insert] mode
 let &t_SI="\e[6 q"
 let &t_EI="\e[2 q"
 
+" Folding mechanism
+set fillchars=fold:\
+set foldmethod=indent
+set foldlevel=99
+set nofoldenable
 set laststatus=2
 
-" Keybindings
+""""""""""""""""""" KEYBINDINGS ''''''''''''''''''''''''
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CleverTab()
+  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    return "\<Tab>"
+  else
+    return "\<C-N>"
+  endif
+endfunction
+inoremap <Tab> <C-R>=CleverTab()<CR>
+
 map <leader>bs :w <CR>
+map <leader>bk :bdelete <CR>
+map <leader>bb :ls<CR>:buffer<Space>
+map <leader>ff :find<Space>
+map gt :bNext <CR>
+map gT :bprevious <CR>
+
+"for spliting purposes
+nnoremap <leader>w <C-w>
+
+"For insert mode
 inoremap jk <Esc>
 inoremap " ""<left>
 inoremap ' ''<left>
@@ -40,6 +66,7 @@ inoremap { {}<left>
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+"For visual mode
 "keep text selected when clicking on < for indenting
 vnoremap < <gv 
 vnoremap > >gv

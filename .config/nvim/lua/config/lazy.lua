@@ -14,10 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   'NeogitOrg/neogit',
   'nvim-tree/nvim-web-devicons',
-  'RRethy/nvim-base16',
-  'windwp/nvim-autopairs',
   'nvim-lualine/lualine.nvim',
+  'onsails/lspkind.nvim',
 
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   {
     'nvim-telescope/telescope.nvim',
