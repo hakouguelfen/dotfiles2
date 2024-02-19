@@ -1,5 +1,5 @@
 .config/tmux/plugins
 .config/zsh/.zcompdump
 .config/nvim/lazy-lock.json
-.vim/.netrwhist
+.vim/.net*
 

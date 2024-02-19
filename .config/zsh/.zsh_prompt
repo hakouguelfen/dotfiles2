@@ -18,8 +18,12 @@ git_branch(){
  git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
+conda_env() {
+  echo " $CONDA_DEFAULT_ENV"
+}
 
 local top_left='%F{blue}%~'
 local bottom_left='%F{green}❯ %F{white}'
 
 PROMPT=$'$top_left %F{green}$(git_branch) %F{yellow}$(git_status) \n$bottom_left'
+RPROMPT=$'%F{blue}$(conda_env)'

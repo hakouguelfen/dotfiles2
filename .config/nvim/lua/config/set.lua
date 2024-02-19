@@ -8,12 +8,13 @@ o.termguicolors  = true
 o.timeoutlen     = 500
 o.updatetime     = 200
 o.scrolloff      = 4
+
 -- Better editor UI
 o.number         = true
 o.numberwidth    = 1
 o.relativenumber = false
 o.signcolumn     = 'no'
-o.cursorline     = false
+o.cursorline     = true
 
 -- Better editing experience
 o.expandtab      = true
