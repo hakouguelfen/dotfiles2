@@ -3,6 +3,7 @@
 msgTag="myvolume"
 scriptName="volController"
 
+# ❯ wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
 pactl set-sink-volume @DEFAULT_SINK@ "$@"
 volume="$(pactl list sinks | grep '^[[:space:]]Volume' | head -n 1 | tail -n 1 | awk '{print $5}' | sed 's/[^0-9]*//g')"
 mute="$(pactl list sinks | grep '^[[:space:]]Mute' | awk '{print $2}')"

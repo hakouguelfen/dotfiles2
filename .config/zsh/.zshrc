@@ -22,6 +22,7 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # My Aliases
+alias ls='lsd --group-directories-first'
 alias l='lsd --group-directories-first'
 alias ll='lsd -lAh --group-directories-first'
 alias cls='clear'
@@ -38,25 +39,7 @@ alias updateParu='paru -Syu'
 alias grep='grep --color'
 
 alias rustbook='rustup doc --book'
-
-up() {
-  local d=""
-  local limit="$1"
-
-  # Default to limit of 1
-  if [ -z "$limit" ] || [ "$limit" -le 0 ]; then
-    limit=1
-  fi
-
-  for ((i = 1; i <= limit; i++)); do
-    d="../$d"
-  done
-
-  # perform cd. Show error if cd fails
-  if ! cd "$d"; then
-    echo "Couldn't go up $limit dirs."
-  fi
-}
+#pandoc file.docx -o output.pdf --pdf-engine=weasyprint
 
 source $HOME/.config/zsh/.zsh_prompt
 source $HOME/.config/zsh/.zprofile

@@ -5,7 +5,7 @@
     "spacing": 4,
 
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces"],
+    "modules-left": ["hyprland/workspaces" ,"tray"],
     "modules-center": ["clock"],
     "modules-right": ["hyprland/language", "pulseaudio", "network", "battery"],
 
@@ -87,5 +87,10 @@
             "car": "",
             "default": ["", "", "󰕾", "󰕾", ""]
         },
+    },
+    "tray": {
+            "format": "<span foreground='#957FB8'>{icon}</span>",
+            "icon-size": 14,
+            "spacing": 5
     },
 }

@@ -4,13 +4,93 @@
       doom-variable-pitch-font (font-spec :family "Fira Code" :size 18))
 
 (setq display-line-numbers-type t)
-(setq org-directory "~/org/")
 
 (beacon-mode 1)
 (setq confirm-kill-emacs nil)
 
 ;; (setq haskell-stylish-on-save t)
 ;; (add-hook 'before-save-hook #'+format/buffer nil t)
+
+(after! org
+  (setq org-directory "~/Documents/Org")
+  (setq org-log-done 'time))
+(with-eval-after-load 'org (global-org-modern-mode))
+
+(use-package! org-auto-tangle
+  :defer t
+  :hook (org-mode . org-auto-tangle-mode)
+  :config
+  (setq org-auto-tangle-default t))
+
+(setq org-agenda-files '("~/Documents/Org/Agenda" "~/Documents/Org/todo.org"))
+
+;;;------ Org agenda configuration ------;;;
+;; Set span for agenda to be just daily
+(setq org-agenda-span 1
+      org-agenda-start-day "+0d"
+      org-agenda-skip-timestamp-if-done t
+      org-agenda-skip-deadline-if-done t
+      org-agenda-skip-scheduled-if-done t
+      org-agenda-skip-scheduled-if-deadline-is-shown t
+      org-agenda-skip-timestamp-if-deadline-is-shown t)
+
+(setq org-agenda-hide-tags-regexp ".*")
+
+(require 'org-super-agenda)
+(setq org-super-agenda-groups
+       '((:name " Overdue "
+                :scheduled past
+                :order 2
+                :face 'error)
+
+         (:name "Personal "
+                :and(:file-path "Personal.p" :not (:tag "event"))
+                :order 3)
+
+         (:name "Family "
+                :and(:file-path "Family.s" :not (:tag "event"))
+                :order 3)
+
+         (:name "Writing "
+                :and(:file-path "Author.p" :not (:tag "event"))
+                :order 3)
+
+         (:name "Learning "
+                :and(:file-path "Knowledge.p" :not (:tag "event"))
+                :order 3)
+
+          (:name " Today "  ; Optionally specify section name
+                :time-grid t
+                :date today
+                :scheduled today
+                :order 1
+                :face 'warning)
+
+))
+
+(org-super-agenda-mode t)
+
+(map! :desc "Next line"
+      :map org-super-agenda-header-map
+      "j" 'org-agenda-next-line)
+
+(map! :desc "Next line"
+      :map org-super-agenda-header-map
+      "k" 'org-agenda-previous-line)
+
+(setq olivetti-style 'fancy
+      olivetti-margin-width 100)
+(setq-default olivetti-body-width 100)
+(add-hook 'org-mode-hook 'org-roam-olivetti-mode)
+
+(setq +latex-viewers '(zathura))
+(with-eval-after-load 'ox-latex)
+
+(map! :leader
+      (:prefix ("o" . "Toggle")
+       :desc "Toggle imenu shown in a sidebar" "i" #'lsp-ui-imenu))
+
+(add-to-list 'default-frame-alist '(alpha-background . 90))
 
 ;; (require 'yaml-mode)
 ;; (require 'yaml)
@@ -63,33 +143,3 @@
 ;;       (:prefix ("m" . "prefix")
 ;;         :desc "flutter-run_prod"
 ;;         "f p" #'flutter-run-prod))
-
-(after! org
-  (setq org-directory "~/Documents/Org")
-  (setq org-log-done 'time))
-
-(use-package! org-auto-tangle
-  :defer t
-  :hook (org-mode . org-auto-tangle-mode)
-  :config
-  (setq org-auto-tangle-default t))
-
-(setq +latex-viewers '(zathura))
-(with-eval-after-load 'ox-latex
-(add-to-list 'org-latex-classes
-             '("org-plain-latex"
-               "\\documentclass{article}
-           [NO-DEFAULT-PACKAGES]
-           [PACKAGES]
-           [EXTRA]"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-
-(map! :leader
-      (:prefix ("o" . "Toggle")
-       :desc "Toggle imenu shown in a sidebar" "i" #'lsp-ui-imenu))
-
-(add-to-list 'default-frame-alist '(alpha-background . 90))

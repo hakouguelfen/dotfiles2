@@ -21,7 +21,11 @@ git_branch() {
   git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
+conda_env() {
+  echo -e "( $CONDA_DEFAULT_ENV)"
+}
+
 top_left='\e[0;34m\]\w\e[m\]'
 bottom_left='\e[0;32m\]❯ \e[m\]'
 
-PS1="$top_left \e[0;32m\]\$(git_branch)\e[m\] \e[0;33m\]\$(git_status)\e[m\] \n$bottom_left"
+PS1="$top_left \e[0;32m\]\$(git_branch)\e[m\] \e[0;33m\]\$(git_status)\e[m\]\e[0;34m\]$(conda_env)\e[m\] \n$bottom_left"

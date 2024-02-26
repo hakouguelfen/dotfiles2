@@ -1,37 +1,13 @@
+@define-color bg #282c34;
+@define-color fg #ffffff;
+@define-color err #f53c3c;
+@define-color pink rgb(242, 143, 173);
+
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
 }
-/*###################*/
-/* WORKSPACES */
-/*###################*/
-#workspaces button {
-    padding: 0px;
-    margin: 5px 4px;
-    border-radius: 15px;
-    transition: all 0.3s ease-in-out;
-    background-color: transparent;
-}
-#workspaces button.persistent {
-    color: #ffffff;
-}
-#workspaces button.empty {
-    color: #404040;
-}
-#workspaces button.visible {
-    color: rgba(242, 143, 173, 1);;
-    transition: all 0.3s ease-in-out;
-    /* background: rgba(242, 143, 173, 1);; */
-    /* min-width: 60px; */
-}
-#workspaces button.urgent {
-    color: #eb4d4b;
-}
-#workspaces button:hover {
-    color: rgba(242, 143, 173, 1);
-}
-/*###################*/
+
 #window {
     margin: 40px;
     font-size: 96px;
@@ -46,23 +22,40 @@
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
-tooltip {
-    background-color: #282c34;
-    border: 0.5px solid #ffffff;
-    border-radius: 5px;
+/*###################*/
+/* WORKSPACES */
+/*###################*/
+#workspaces button {
+    padding: 0px;
+    margin: 5px 4px;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+    background-color: transparent;
 }
-tooltip label {
-    color: #ffffff;
-    font-size: 16px;
-    padding: 0.5rem 0.7rem;
+#workspaces button.persistent {
+    color: @fg;
+}
+#workspaces button.empty {
+    color: #404040;
+}
+#workspaces button.visible {
+    color: @pink;
+    transition: all 0.3s ease-in-out;
+}
+#workspaces button.urgent {
+    color: @err;
+}
+#workspaces button:hover {
+    color: @pink;
 }
 
+/*###################*/
 #clock,
 #battery,
 #pulseaudio,
 #network,
 #language {
-    color: #ffffff;
+    color: @fg;
     font-size: 14px;
     font-weight: bold;
     padding: 0 7px;
@@ -70,21 +63,21 @@ tooltip label {
 
 /* BATTERY */
 #battery.charging, #battery.plugged {
-    color: #ffffff;
+    color: @fg;
     background-color: #26A65B;
     border-radius: 5px;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
+        background-color: @fg;
         color: #000000;
     }
 }
 
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: @err;
+    color: @fg;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -101,7 +94,26 @@ label:focus {
 /* Network */
 /*###################*/
 #network.disconnected {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: @err;
+    color: @fg;
     border-radius: 5px;
+}
+
+#tray {
+  border-radius: 7px;
+  margin: 0 7px;
+  padding: 0 10px;
+  background-color: @bg;
+  color: @fg;
+}
+
+tooltip {
+    background-color: @bg;
+    border: 0.5px solid @fg;
+    border-radius: 5px;
+}
+tooltip label {
+    color: @fg;
+    font-size: 16px;
+    padding: 0.5rem 0.7rem;
 }
