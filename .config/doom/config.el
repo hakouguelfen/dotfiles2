@@ -24,51 +24,55 @@
 
 (setq org-agenda-files '("~/Documents/Org/Agenda" "~/Documents/Org/todo.org"))
 
-;;;------ Org agenda configuration ------;;;
-;; Set span for agenda to be just daily
-(setq org-agenda-span 1
-      org-agenda-start-day "+0d"
-      org-agenda-skip-timestamp-if-done t
-      org-agenda-skip-deadline-if-done t
-      org-agenda-skip-scheduled-if-done t
-      org-agenda-skip-scheduled-if-deadline-is-shown t
-      org-agenda-skip-timestamp-if-deadline-is-shown t)
+(use-package! org-super-agenda
+  :after org-agenda
+  :config
+  ;; Enable org-super-agenda
+  (org-super-agenda-mode)
+  (setq org-agenda-block-separator ?_)
 
-(setq org-agenda-hide-tags-regexp ".*")
+  ;; remove uncessary infos from agenda
+  (setq org-agenda-span 1
+        org-agenda-start-day "+0d"
+        org-agenda-skip-timestamp-if-done t
+        org-agenda-skip-deadline-if-done t
+        org-agenda-skip-scheduled-if-done t
+        org-agenda-skip-scheduled-if-deadline-is-shown t
+        org-agenda-skip-timestamp-if-deadline-is-shown t)
+  (setq org-agenda-hide-tags-regexp ".*")
 
-(require 'org-super-agenda)
+;; Customizing the groups
 (setq org-super-agenda-groups
        '((:name " Overdue "
                 :scheduled past
                 :order 2
                 :face 'error)
 
-         (:name "Personal "
-                :and(:file-path "Personal.p" :not (:tag "event"))
+         (:name "ALGO"
+                :tag "ALGO"
                 :order 3)
+         (:name "DB"
+                :tag "DB"
+                :order 4)
+         (:name "OPT"
+                :tag "OPT"
+                :order 5)
+         (:name "Fouille"
+                :tag "Fouille"
+                :order 6)
+         (:name "Entrepot"
+                :tag "Entrepot"
+                :order 7)
+         (:name "TAI"
+                :tag "TAI"
+                :order 8)
 
-         (:name "Family "
-                :and(:file-path "Family.s" :not (:tag "event"))
-                :order 3)
-
-         (:name "Writing "
-                :and(:file-path "Author.p" :not (:tag "event"))
-                :order 3)
-
-         (:name "Learning "
-                :and(:file-path "Knowledge.p" :not (:tag "event"))
-                :order 3)
-
-          (:name " Today "  ; Optionally specify section name
+        (:name " Today"
                 :time-grid t
                 :date today
                 :scheduled today
                 :order 1
-                :face 'warning)
-
-))
-
-(org-super-agenda-mode t)
+                :face 'warning))))
 
 (map! :desc "Next line"
       :map org-super-agenda-header-map
@@ -81,7 +85,7 @@
 (setq olivetti-style 'fancy
       olivetti-margin-width 100)
 (setq-default olivetti-body-width 100)
-(add-hook 'org-mode-hook 'org-roam-olivetti-mode)
+(add-hook 'org-agenda-mode-hook 'olivetti-mode)
 
 (setq +latex-viewers '(zathura))
 (with-eval-after-load 'ox-latex)
