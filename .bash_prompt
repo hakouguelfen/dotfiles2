@@ -1,31 +1,10 @@
-git_status() {
-  STATUS="$(git status 2>/dev/null)"
-
-  if [[ $? -ne 0 ]]; then
-    printf ""
-    return
-  fi
-
-  modified=$(echo "${STATUS}" | grep -c "modified")
-  untracked=$(echo "${STATUS}" | grep -c "Untracked")
-  branch_is_ahead=$(echo "${STATUS}" | grep -c "branch is ahead")
-  new_file=$(echo "${STATUS}" | grep -c "new file")
-
-  if [[ "$modified" -ne 0 ]]; then printf "$modified! "; else printf ""; fi
-  if [[ "$untracked" -ne 0 ]]; then printf "$untracked? "; else printf ""; fi
-  if [[ "$branch_is_ahead" -ne 0 ]]; then printf "$branch_is_ahead* "; else printf ""; fi
-  if [[ "$new_file" -ne 0 ]]; then printf "$new_file+ "; else printf ""; fi
-}
-
-git_branch() {
-  git rev-parse --abbrev-ref HEAD 2>/dev/null
-}
-
 conda_env() {
   echo -e "( $CONDA_DEFAULT_ENV)"
 }
 
-top_left='\e[0;34m\]\w\e[m\]'
-bottom_left='\e[0;32m\]❯ \e[m\]'
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
 
-PS1="$top_left \e[0;32m\]\$(git_branch)\e[m\] \e[0;33m\]\$(git_status)\e[m\]\e[0;34m\]$(conda_env)\e[m\] \n$bottom_left"
+PS1='\e[0;34m\]\w\e[m\] $(__git_ps1 "%s") \e[0;34m\]$(conda_env)\e[m\] \n\e[0;32m\]❯ \e[m\]'
+

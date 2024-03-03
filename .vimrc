@@ -10,11 +10,11 @@ filetype plugin indent on
 
 set nocompatible
 set number relativenumber
-set cursorline
 
 set ignorecase
 set smartcase 
 set incsearch
+set cursorline
 
 set autoindent
 set smartindent
@@ -49,9 +49,13 @@ set laststatus=2
 " toggle cursor [Normal/Insert] mode
 let &t_SI="\e[6 q"
 let &t_EI="\e[2 q"
+" this fix some delay after pressing <Esc> 
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
 
-""""""""""""""""""" KEYBINDINGS ''''''''''''''''''''''''
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""" KEYBINDINGS ''''''''''''''''''''''''
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! CleverTab()
   if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
     return "\<Tab>"
@@ -79,11 +83,8 @@ inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
 "pressing enter to select from menu
 inoremap <expr> <CR> pumvisible() ? "<C-y>" :"<CR>" 
-
 
 "For visual mode
 "keep text selected when clicking on < for indenting

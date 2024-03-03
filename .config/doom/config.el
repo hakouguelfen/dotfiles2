@@ -34,11 +34,12 @@
   ;; remove uncessary infos from agenda
   (setq org-agenda-span 1
         org-agenda-start-day "+0d"
-        org-agenda-skip-timestamp-if-done t
-        org-agenda-skip-deadline-if-done t
-        org-agenda-skip-scheduled-if-done t
-        org-agenda-skip-scheduled-if-deadline-is-shown t
-        org-agenda-skip-timestamp-if-deadline-is-shown t)
+        ;; org-agenda-skip-timestamp-if-done t
+        ;; org-agenda-skip-deadline-if-done t
+        ;; org-agenda-skip-scheduled-if-done t
+        ;; org-agenda-skip-scheduled-if-deadline-is-shown t
+        ;; org-agenda-skip-timestamp-if-deadline-is-shown t
+        )
   (setq org-agenda-hide-tags-regexp ".*")
 
 ;; Customizing the groups

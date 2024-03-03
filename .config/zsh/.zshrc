@@ -45,3 +45,4 @@ source $HOME/.config/zsh/.zsh_prompt
 source $HOME/.config/zsh/.zprofile
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/git/completion/git-prompt.sh

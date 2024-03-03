@@ -34,8 +34,17 @@ vim.cmd("inoremap ' ''<left>")
 vim.cmd("inoremap ( ()<left>")
 vim.cmd("inoremap [ []<left>")
 vim.cmd("inoremap { {}<left>")
-vim.cmd("inoremap {<CR> {<CR>}<ESC>O")
-vim.cmd("inoremap {;<CR> {<CR>};<ESC>O")
 
 vim.cmd("vnoremap < <gv")
 vim.cmd("vnoremap > >gv")
+
+vim.cmd("nnoremap <leader>w <C-w>")
+
+-- Highlight the region on yank
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
+  end,
+})

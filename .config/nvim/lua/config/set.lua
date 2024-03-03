@@ -1,6 +1,5 @@
 local o          = vim.o
 local opt        = vim.opt
-local A          = vim.api
 
 o.laststatus     = 3
 
@@ -49,19 +48,18 @@ o.history        = 50
 o.splitright     = true
 o.splitbelow     = true
 
-opt.hlsearch     = false
-opt.incsearch    = true
-
--- Highlight the region on yank
-A.nvim_create_autocmd('TextYankPost', {
-  group = num_au,
-  callback = function()
-    vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
-  end,
-})
-
+-----------------------------
+-- vim.opt
 -- Folding mechanism
+-----------------------------
 opt.fillchars = { fold = " " }
 opt.foldmethod = "indent"
 opt.foldenable = false
 opt.foldlevel = 99
+
+opt.hlsearch     = false
+opt.incsearch    = true
+
+opt.showmode = false
+opt.undofile = true
+
