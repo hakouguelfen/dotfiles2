@@ -1,6 +1,8 @@
 local o          = vim.o
 local opt        = vim.opt
 
+vim.g.have_nerd_font = true
+
 o.laststatus     = 3
 
 o.termguicolors  = true

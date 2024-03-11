@@ -15,7 +15,6 @@ local plugins = {
   'NeogitOrg/neogit',
   'nvim-tree/nvim-web-devicons',
   'nvim-lualine/lualine.nvim',
-  'onsails/lspkind.nvim',
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
   {
     'nvim-telescope/telescope.nvim',
@@ -37,14 +36,37 @@ local plugins = {
       { 'williamboman/mason.nvim' },           -- Optional
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },                  -- Required
+      { 'hrsh7th/nvim-cmp',                    -- Required
+        dependencies = {
+          'L3MON4D3/LuaSnip'
+        },
+      },
       { 'hrsh7th/cmp-nvim-lsp' },              -- Required
       { 'hrsh7th/cmp-buffer' },                -- Optional
       { 'hrsh7th/cmp-path' },                  -- Optional
-      { 'L3MON4D3/LuaSnip' },                  -- Required
     }
   }
 }
-local opts = {}
+local opts = {
+  ui = {
+    -- If you have a Nerd Font, set icons to an empty table which will use the
+    -- default lazy.nvim defined Nerd Font icons otherwise define a unicode icons table
+    icons = vim.g.have_nerd_font and {} or {
+      cmd = '⌘',
+      config = '🛠',
+      event = '📅',
+      ft = '📂',
+      init = '⚙',
+      keys = '🗝',
+      plugin = '🔌',
+      runtime = '💻',
+      require = '🌙',
+      source = '📄',
+      start = '🚀',
+      task = '📌',
+      lazy = '💤 ',
+    },
+  },
+}
 
 require('lazy').setup(plugins, opts)
