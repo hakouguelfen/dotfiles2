@@ -11,6 +11,7 @@ vim.keymap.set('n', '<leader>op', ':NvimTreeToggle<cr>')
 vim.keymap.set("n", "<leader>gg", ":Neogit<cr>")
 vim.keymap.set("n", "<leader>bk", ":bdelete<cr>")
 vim.keymap.set("n", "gt", ":bNext<cr>")
+vim.keymap.set("n", "gT", ":bprevious<cr>")
 
 -- center page when scrolling
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
@@ -26,7 +27,6 @@ vim.keymap.set("x", 'p', "\"_dP")
 -- Lsp keymaps
 vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 vim.keymap.set("n", "<leader>bs", ":w<CR>")
-vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 
 -- Auto pairs
 vim.cmd('inoremap " ""<left>')

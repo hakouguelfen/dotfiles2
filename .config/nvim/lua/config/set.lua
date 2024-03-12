@@ -14,7 +14,6 @@ o.scrolloff      = 4
 o.number         = true
 o.numberwidth    = 1
 o.relativenumber = false
-o.signcolumn     = 'no'
 o.cursorline     = true
 
 -- Better editing experience
@@ -64,4 +63,7 @@ opt.incsearch    = true
 
 opt.showmode = false
 opt.undofile = true
+opt.signcolumn     = 'yes'
 
+opt.completeopt = {'menu', 'menuone', 'noselect', 'noinsert'}
+opt.shortmess:append('c')

@@ -12,6 +12,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+  'neovim/nvim-lspconfig',
+  'navarasu/onedark.nvim',
   'NeogitOrg/neogit',
   'nvim-tree/nvim-web-devicons',
   'nvim-lualine/lualine.nvim',
@@ -26,47 +28,6 @@ local plugins = {
     'nvim-tree/nvim-tree.lua',
     tag = 'nightly'
   },
-
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    dependencies = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },             -- Required
-      { 'williamboman/mason.nvim' },           -- Optional
-      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp',                    -- Required
-        dependencies = {
-          'L3MON4D3/LuaSnip'
-        },
-      },
-      { 'hrsh7th/cmp-nvim-lsp' },              -- Required
-      { 'hrsh7th/cmp-buffer' },                -- Optional
-      { 'hrsh7th/cmp-path' },                  -- Optional
-    }
-  }
-}
-local opts = {
-  ui = {
-    -- If you have a Nerd Font, set icons to an empty table which will use the
-    -- default lazy.nvim defined Nerd Font icons otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
-  },
 }
 
-require('lazy').setup(plugins, opts)
+require('lazy').setup(plugins, {})
