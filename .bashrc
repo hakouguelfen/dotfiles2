@@ -32,4 +32,3 @@ alias updateParu='paru -Syu'
 alias grep='grep --color'
 
 alias rustbook='rustup doc --book'
-

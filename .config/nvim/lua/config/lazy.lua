@@ -12,22 +12,22 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  'neovim/nvim-lspconfig',
+  {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+  {'nvim-telescope/telescope.nvim', dependencies = 'nvim-lua/plenary.nvim'},
+  {'nvim-tree/nvim-tree.lua', dependencies = 'nvim-tree/nvim-web-devicons'},
   'navarasu/onedark.nvim',
-  'NeogitOrg/neogit',
-  'nvim-tree/nvim-web-devicons',
   'nvim-lualine/lualine.nvim',
-  { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-  {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.2',
-    dependencies = { { 'nvim-lua/plenary.nvim' } }
-  },
+  'NeogitOrg/neogit',
+  'lewis6991/gitsigns.nvim',
+  'numToStr/Comment.nvim',
+  'folke/zen-mode.nvim',
 
-  {
-    'nvim-tree/nvim-tree.lua',
-    tag = 'nightly'
-  },
+  'neovim/nvim-lspconfig',
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-nvim-lsp",
+  "L3MON4D3/LuaSnip"
 }
 
 require('lazy').setup(plugins, {})

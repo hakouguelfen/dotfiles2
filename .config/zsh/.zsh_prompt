@@ -1,5 +1,7 @@
+source /usr/share/git/completion/git-prompt.sh
+
 conda_env() {
-  echo " $CONDA_DEFAULT_ENV"
+  echo "$CONDA_DEFAULT_ENV"
 }
 
 local top_left='%F{blue}%~'
