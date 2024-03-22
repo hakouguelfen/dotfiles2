@@ -8,6 +8,7 @@ export BROWSER="librewolf"
 export HISTCONTROL=ignoreboth
 export LS_COLORS="$(vivid generate one-dark)"
 export GTK_THEME=Colloid-Nord:dark
+export JAVA_HOME=/usr
 
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 

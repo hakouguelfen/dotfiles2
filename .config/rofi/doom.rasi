@@ -7,17 +7,16 @@ window {
     height:                         80%;
     width:                          23%;
     border:                         1px;
-    border-color:                   @OFF;
-	border-radius:                  10px;
+    border-radius:                  10px;
 }
 
 mainbox {
     background-color:               @background-alt;
-	border:							0% 0% 0% 0%;
+    border:                         0% 0% 0% 0%;
     border-radius:                  0% 0% 0% 0%;
-	border-color:					@accent;
+    border-color:                   @accent;
     children:                       [ inputbar, listview ];
-    spacing:                       	2%;
+    spacing:                        2%;
     padding:                        2% 1% 2% 1%;
 }
 
@@ -29,9 +28,9 @@ inputbar {
 }
 
 prompt {
-    enabled: 						true;
- 	background-color: 				@accent;
- 	text-color: 					@foreground;
+    enabled:                        true;
+    background-color: 				@accent;
+    text-color: 					@foreground;
     margin:                         20px 0px 0px 20px;
 }
 entry {
@@ -68,8 +67,7 @@ element {
     text-color:                     @foreground;
     padding:                        7px;
     margin:                         0px 10px 0px 0px;
-    border-color:                   @FGA;
-	border-radius:                  10px;
+    border-radius:                  10px;
     spacing:                        7px;
 }
 element-text {
