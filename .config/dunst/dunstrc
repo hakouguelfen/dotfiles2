@@ -157,11 +157,11 @@
     # Recursive icon lookup. You can set a single theme, instead of having to
     # define all lookup paths.
     enable_recursive_icon_lookup = true
-    icon_theme = Colloid-dark
+    icon_theme = Colloid-grey
     icon_position = left
     min_icon_size = 48
     max_icon_size = 48
-    icon_path = /usr/share/icons/Colloid-dark
+    icon_path = /usr/share/icons/Colloid-grey
 
     ### History ###
     # Should a notification popped up from history be sticky or timeout

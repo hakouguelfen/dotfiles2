@@ -2,10 +2,10 @@
 @define-color fg #ffffff;
 @define-color err #f53c3c;
 @define-color pink rgb(242, 143, 173);
-
 * {
     font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 13px;
+    background: @bg;
 }
 
 #window {

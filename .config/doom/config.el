@@ -116,35 +116,35 @@
 
 ;; add this to .emacs.d/early-init.el for flutter to work properly
 ;; it adds the flutter sdk path to emacs
-;; (setenv "PATH" (concat (getenv "PATH") ":/opt/flutter/bin"))
-;; (setq exec-path (append exec-path '("/opt/flutter/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/opt/flutter/bin"))
+(setq exec-path (append exec-path '("/opt/flutter/bin")))
 
-;; (use-package dart-mode
-;;   :custom
-;;   (dart-format-on-save t))
+(use-package dart-mode
+  :custom
+  (dart-format-on-save t))
 
-;; (use-package flutter
-;;   :after dart-mode
-;;   :hook (dart-mode . (lambda ()
-;;     (add-hook 'after-save-hook #'flutter-run-or-hot-reload nil t))))
+(use-package flutter
+  :after dart-mode
+  :hook (dart-mode . (lambda ()
+    (add-hook 'after-save-hook #'flutter-run-or-hot-reload nil t))))
 
-;; (defun flutter-run-dev ()
-;;   (interactive)
-;;   (let ((flutter-command "flutter run --flavor dev -t lib/main/main_dev.dart"))
-;;     (flutter-run "--flavor dev -t lib/main/main_dev.dart")))
+(defun flutter-run-dev ()
+  (interactive)
+  (let ((flutter-command "flutter run --flavor dev -t lib/main/main_dev.dart"))
+    (flutter-run "--flavor dev -t lib/main/main_dev.dart")))
 
-;; (defun flutter-run-prod ()
-;;   (interactive)
-;;   (let ((flutter-command "flutter run --flavor prod -t lib/main/main_prod.dart"))
-;;     (flutter-run "--flavor prod -t lib/main/main_prod.dart")))
+(defun flutter-run-prod ()
+  (interactive)
+  (let ((flutter-command "flutter run --flavor prod -t lib/main/main_prod.dart"))
+    (flutter-run "--flavor prod -t lib/main/main_prod.dart")))
 
 
-;; (map! :leader
-;;       (:prefix ("m" . "prefix")
-;;         :desc "flutter-run_dev"
-;;         "f d" #'flutter-run-dev))
+(map! :leader
+      (:prefix ("m" . "prefix")
+        :desc "flutter-run_dev"
+        "f d" #'flutter-run-dev))
 
-;; (map! :leader
-;;       (:prefix ("m" . "prefix")
-;;         :desc "flutter-run_prod"
-;;         "f p" #'flutter-run-prod))
+(map! :leader
+      (:prefix ("m" . "prefix")
+        :desc "flutter-run_prod"
+        "f p" #'flutter-run-prod))

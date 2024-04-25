@@ -1,14 +1,19 @@
 export PAGER="most"
 export PATH=$PATH:~/.local/bin/scripts
-export PATH=$PATH:~/miniconda3/bin
 export PATH=$PATH:~/.config/emacs/bin
 export MANPAGER="nvim +Man!"
 export EDITOR="nvim"
 export BROWSER="librewolf"
 export HISTCONTROL=ignoreboth
 export LS_COLORS="$(vivid generate one-dark)"
-export GTK_THEME=Colloid-Nord:dark
-export JAVA_HOME=/usr
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+export PATH=$PATH:/usr/lib/jvm/java-11-openjdk/bin
+
+export PATH=$PATH:/opt/flutter/bin
+export PATH=$PATH:/opt/hadoop/bin
+
+export PATH=$PATH:~/miniconda3/bin
 
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
