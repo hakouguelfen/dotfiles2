@@ -176,7 +176,7 @@ bind = SUPERSHIFT, r, exec, killall waybar && waybar &
 bind = $mainMod, Space, exec, fuzzel
 bind = $mainMod, s, exec, spotify-launcher
 bind = $mainMod, e, exec, emacsclient -c -a 'emacs'
-bind = $mainMod, b, exec, librewolf
+bind = $mainMod, b, exec, brave
 bind = $mainMod, m, exec, thunderbird
 
 # ########################
