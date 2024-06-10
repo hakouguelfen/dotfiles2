@@ -1,8 +1,7 @@
-source /usr/share/git/completion/git-prompt.sh
-
-conda_env() {
-  echo "$CONDA_DEFAULT_ENV"
-}
+#source /usr/share/git-core/contrib/completion/git-prompt.sh
+#conda_env() {
+#  echo "$CONDA_DEFAULT_ENV"
+#}
 
 local top_left='%F{blue}%~'
 local bottom_left='%F{green}❯ %F{white}'
@@ -11,5 +10,5 @@ GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 
-PROMPT=$'$top_left %F{green}$(__git_ps1 "%s") \n$bottom_left'
-RPROMPT=$'%F{blue}$(conda_env)'
+#PROMPT=$'$top_left %F{green}$(__git_ps1 "%s") \n$bottom_left'
+PROMPT=$'$top_left \n$bottom_left'

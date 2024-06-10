@@ -27,22 +27,14 @@ alias l='lsd --group-directories-first'
 alias ll='lsd -lAh --group-directories-first'
 alias cls='clear'
 alias mkdir='mkdir -pv'
-alias cat='bat'
-
-alias v='nvim'
-
-alias get='sudo pacman -S'
-alias del='sudo pacman -Rns'
-alias update='sudo pacman -Syu'
-alias updateParu='paru -Syu'
+alias cat='batcat'
 
 alias grep='grep --color'
-
 alias rustbook='rustup doc --book'
 #pandoc file.docx -o output.pdf --pdf-engine=weasyprint
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source $HOME/.config/zsh/.zsh_prompt
 source $HOME/.config/zsh/.zprofile

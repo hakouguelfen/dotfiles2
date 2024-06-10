@@ -1,17 +1,19 @@
 /* See LICENSE file for copyright and license details. */
 #include <X11/XF86keysym.h>
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappx     = 5;        /* gaps between windows */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "FiraCodeNerdFont-Bold:size=12" };
 static const char dmenufont[]       = "FiraCodeNerdFont-Bold:size=12";
 static const char col_gray1[]       = "#282c34";
-static const char col_gray2[]       = "#444444";
+static const char col_gray2[]       = "#282c34";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_cyan[]        = "#52565C";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -46,14 +48,14 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
-#define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+#define TAGKEYS(KEY,TAG)                                                                                               \
+       &((Keychord){1, {{MODKEY, KEY}},                                        view,           {.ui = 1 << TAG} }), \
+       &((Keychord){1, {{MODKEY|ControlMask, KEY}},                            toggleview,     {.ui = 1 << TAG} }), \
+       &((Keychord){1, {{MODKEY|ShiftMask, KEY}},                              tag,            {.ui = 1 << TAG} }), \
+       &((Keychord){1, {{MODKEY|ControlMask|ShiftMask, KEY}},                  toggletag,      {.ui = 1 << TAG} }),
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/zsh", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -61,67 +63,92 @@ static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *roficmd[]  = { "rofi", "-show", "drun", NULL };
 
-static const char *increaseVol[]  = { "sh", ".config/dunst/scripts/vol.sh", "+3%", NULL };
-static const char *decreaseVol[]  = { "sh", ".config/dunst/scripts/vol.sh", "-3%", NULL };
+static const char *increaseVol[]  = { "sh", ".config/dunst/scripts/vol.sh", "3%+", NULL };
+static const char *decreaseVol[]  = { "sh", ".config/dunst/scripts/vol.sh", "3%-", NULL };
 static const char *muteVol[]  = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle", NULL };
 
 static const char *increaseLight[]  = { "brightnessctl", "set", "5%+", NULL };
 static const char *decreaseLight[]  = { "brightnessctl", "set", "5%-", NULL };
-static const char *launchBrowser[]  = { "firefox", NULL };
+
+static const char *launchBrowser[]  = { "brave-browser", NULL };
 static const char *launchEditor[]  = { "emacsclient","-c", "-a", "emacs", NULL };
 static const char *takeScreenShot[]  = { "flameshot","launcher", NULL };
+static const char *launchSpotify[]  = { "spotify", NULL };
+static const char *launchTorrent[]  = { "transmission-gtk", NULL };
 
-static const Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,	                      XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_space,  spawn,      	   {.v = roficmd } },
-	{ MODKEY,                   		XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_b,      spawn,          {.v = launchBrowser }},
-	{ MODKEY,                       XK_e,      spawn,          {.v = launchEditor }},
-	{ MODKEY,                       XK_f,      spawn,          {.v = takeScreenShot }},
+static const char *findDocs[]  = { "sh", ".local/bin/scripts/docs.sh", NULL };
+static const char *killProccess[]  = { "sh", ".local/bin/scripts/killproccess.sh", NULL };
+static const char *scanWifi[]  = { "sh", ".local/bin/scripts/wifi.sh", NULL };
+static const char *surfWeb[]  = { "sh", ".local/bin/scripts/surf.sh", NULL };
+static const char *searchGithub[]  = { "sh", ".local/bin/scripts/github.sh", NULL };
+static const char *powerPc[]  = { "sh", ".local/bin/scripts/power.sh", NULL };
+static const char *showTv[]  = { "sh", ".local/bin/scripts/tv.sh", NULL };
 
-// VOLUME
-  { 0,                            XF86XK_AudioRaiseVolume,  spawn,      	   {.v = increaseVol } },
-  { 0,                            XF86XK_AudioLowerVolume,  spawn,      	   {.v = decreaseVol } },
-  { 0,                            XF86XK_AudioMute,         spawn,      	   {.v = muteVol } },
+static Keychord *keychords[] = {
+       /* Keys        function        argument */
+       &((Keychord){1, {{MODKEY, XK_p}},                                       spawn,          {.v = dmenucmd } }),
+       &((Keychord){1, {{MODKEY, XK_Return}},                                  spawn,          {.v = termcmd } }),
+       &((Keychord){1, {{MODKEY, XK_space}},                                   spawn,          {.v = roficmd } }),
+       &((Keychord){1, {{MODKEY, XK_q}},                                       killclient,          {0} }),
+
+       /* Launch Apps */
+       &((Keychord){1, {{MODKEY, XK_b}},                                       spawn,          {.v = launchBrowser } }),
+       &((Keychord){1, {{MODKEY, XK_e}},                                       spawn,          {.v = launchEditor } }),
+       &((Keychord){1, {{MODKEY, XK_f}},                                       spawn,          {.v = takeScreenShot } }),
+       &((Keychord){1, {{MODKEY, XK_s}},                                       spawn,          {.v = launchSpotify } }),
+       &((Keychord){1, {{MODKEY, XK_t}},                                       spawn,          {.v = launchTorrent } }),
+
+       /* Volume */
+       &((Keychord){1, {{0, XF86XK_AudioRaiseVolume}},                         spawn,          {.v = increaseVol } }),
+       &((Keychord){1, {{0, XF86XK_AudioLowerVolume}},                         spawn,          {.v = decreaseVol } }),
+       &((Keychord){1, {{0, XF86XK_AudioMute}},                                spawn,          {.v = muteVol } }),
   
-// LIGHT
-  { 0,                            XF86XK_MonBrightnessUp,   spawn,      	   {.v = increaseLight } },
-  { 0,                            XF86XK_MonBrightnessDown, spawn,      	   {.v = decreaseLight } },
-  
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+       /* LIGHT */
+       &((Keychord){1, {{0, XF86XK_MonBrightnessUp}},                          spawn,          {.v = increaseLight } }),
+       &((Keychord){1, {{0, XF86XK_MonBrightnessDown}},                        spawn,          {.v = decreaseLight } }),
 
-/*	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-//	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-//	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-//  { MODKEY,                       XK_space,  setlayout,      {0} },
-//	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-//	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } }, */
+       /* Custom scripts */
+       &((Keychord){2, {{MODKEY, XK_c}, {0, XK_d}},                            spawn,          {.v = findDocs } }),
+       &((Keychord){2, {{MODKEY, XK_c}, {0, XK_k}},                            spawn,          {.v = killProccess } }),
+       &((Keychord){2, {{MODKEY, XK_c}, {0, XK_w}},                            spawn,          {.v = scanWifi } }),
+       &((Keychord){2, {{MODKEY, XK_c}, {0, XK_s}},                            spawn,          {.v = surfWeb } }),
+       &((Keychord){2, {{MODKEY, XK_c}, {0, XK_g}},                            spawn,          {.v = searchGithub } }),
+       &((Keychord){2, {{MODKEY, XK_c}, {0, XK_p}},                            spawn,          {.v = powerPc } }),
+       &((Keychord){2, {{MODKEY, XK_c}, {0, XK_t}},                            spawn,          {.v = showTv } }),
+       
+    /* &((Keychord){2, {{MODKEY, XK_e}, {MODKEY, XK_e}},                       spawn,          {.v = termcmd } }),
+       &((Keychord){1, {{MODKEY, XK_b}},                                       togglebar,      {0} }),
+       &((Keychord){1, {{MODKEY, XK_j}},                                       focusstack,     {.i = +1 } }),
+       &((Keychord){1, {{MODKEY, XK_k}},                                       focusstack,     {.i = -1 } }),
+       &((Keychord){1, {{MODKEY, XK_i}},                                       incnmaster,     {.i = +1 } }),
+       &((Keychord){1, {{MODKEY, XK_d}},                                       incnmaster,     {.i = -1 } }),
+       &((Keychord){1, {{MODKEY, XK_h}},                                       setmfact,       {.f = -0.05} }),
+       &((Keychord){1, {{MODKEY, XK_l}},                                       setmfact,       {.f = +0.05} }),
+       &((Keychord){1, {{MODKEY, XK_Return}},                                  zoom,           {0} }),
+       &((Keychord){1, {{MODKEY, XK_Tab}},                                     view,           {0} }),
+       &((Keychord){1, {{MODKEY|ShiftMask, XK_c}},                             killclient,     {0} }),
+       &((Keychord){1, {{MODKEY, XK_t}},                                       setlayout,      {.v = &layouts[0]} }),
+       &((Keychord){1, {{MODKEY, XK_f}},                                       setlayout,      {.v = &layouts[1]} }),
+       &((Keychord){1, {{MODKEY, XK_m}},                                       setlayout,      {.v = &layouts[2]} }),
+       &((Keychord){1, {{MODKEY, XK_space}},                                   setlayout,      {0} }),
+       &((Keychord){1, {{MODKEY|ShiftMask, XK_space}},                         togglefloating, {0} }),
+       &((Keychord){1, {{MODKEY, XK_0}},                                       view,           {.ui = ~0 } }),
+       &((Keychord){1, {{MODKEY|ShiftMask, XK_0}},                             tag,            {.ui = ~0 } }),
+       &((Keychord){1, {{MODKEY, XK_comma}},                                   focusmon,       {.i = -1 } }),
+       &((Keychord){1, {{MODKEY, XK_period}},                                  focusmon,       {.i = +1 } }),
+       &((Keychord){1, {{MODKEY|ShiftMask, XK_comma}},                         tagmon,         {.i = -1 } }),
+       &((Keychord){1, {{MODKEY|ShiftMask, XK_period}},                        tagmon,         {.i = +1 } }), */
 
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-
-	TAGKEYS(                        XK_ampersand,              0)
-	TAGKEYS(                        XK_eacute,                 1)
-	TAGKEYS(                        XK_quotedbl,               2)
-	TAGKEYS(                        XK_apostrophe,             3)
-	TAGKEYS(                        XK_parenleft,              4)
-	TAGKEYS(                        XK_minus,                  5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+       &((Keychord){1, {{MODKEY|ShiftMask, XK_q}},                             quit,           {0} }),
+     TAGKEYS(                        XK_ampersand,              0)
+     TAGKEYS(                        XK_eacute,                 1)
+     TAGKEYS(                        XK_quotedbl,               2)
+     TAGKEYS(                        XK_apostrophe,             3)
+     TAGKEYS(                        XK_parenleft,              4)
+     TAGKEYS(                        XK_minus,                  5)
+     TAGKEYS(                        XK_7,                      6)
+     TAGKEYS(                        XK_8,                      7)
+     TAGKEYS(                        XK_9,                      8)
 };
 
 /* button definitions */
