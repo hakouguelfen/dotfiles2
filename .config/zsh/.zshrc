@@ -28,6 +28,7 @@ alias ll='lsd -lAh --group-directories-first'
 alias cls='clear'
 alias mkdir='mkdir -pv'
 alias cat='batcat'
+alias v='vim'
 
 alias grep='grep --color'
 alias rustbook='rustup doc --book'
