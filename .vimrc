@@ -27,7 +27,7 @@ set shiftwidth=2
 set softtabstop=-1
 set scrolloff=4
 
-set clipboard+=unnamedplus
+set clipboard=unnamedplus
 set wildmode=longest,list,full
 set path+=**
 set wildmenu
