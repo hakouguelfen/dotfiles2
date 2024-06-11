@@ -63,26 +63,26 @@ static const char *dmenucmd[] = { "dmenu_run", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *roficmd[]  = { "rofi", "-show", "drun", NULL };
 
-static const char *increaseVol[]  = { "sh", ".config/dunst/scripts/vol.sh", "3%+", NULL };
-static const char *decreaseVol[]  = { "sh", ".config/dunst/scripts/vol.sh", "3%-", NULL };
-static const char *muteVol[]  = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *increaseVol[]    = { "sh", ".config/dunst/scripts/vol.sh", "3%+", NULL };
+static const char *decreaseVol[]    = { "sh", ".config/dunst/scripts/vol.sh", "3%-", NULL };
+static const char *muteVol[]        = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle", NULL };
 
 static const char *increaseLight[]  = { "brightnessctl", "set", "5%+", NULL };
 static const char *decreaseLight[]  = { "brightnessctl", "set", "5%-", NULL };
 
 static const char *launchBrowser[]  = { "brave-browser", NULL };
-static const char *launchEditor[]  = { "emacsclient","-c", "-a", "emacs", NULL };
-static const char *takeScreenShot[]  = { "flameshot","launcher", NULL };
+static const char *launchEditor[]   = { "emacsclient","-c", "-a", "emacs", NULL };
+static const char *takeScreenShot[] = { "flameshot","launcher", NULL };
 static const char *launchSpotify[]  = { "spotify", NULL };
 static const char *launchTorrent[]  = { "transmission-gtk", NULL };
 
-static const char *findDocs[]  = { "sh", ".local/bin/scripts/docs.sh", NULL };
-static const char *killProccess[]  = { "sh", ".local/bin/scripts/killproccess.sh", NULL };
-static const char *scanWifi[]  = { "sh", ".local/bin/scripts/wifi.sh", NULL };
-static const char *surfWeb[]  = { "sh", ".local/bin/scripts/surf.sh", NULL };
-static const char *searchGithub[]  = { "sh", ".local/bin/scripts/github.sh", NULL };
-static const char *powerPc[]  = { "sh", ".local/bin/scripts/power.sh", NULL };
-static const char *showTv[]  = { "sh", ".local/bin/scripts/tv.sh", NULL };
+static const char *findDocs[]       = { "bash", ".local/bin/scripts/docs.sh", NULL };
+static const char *killProccess[]   = { "bash", ".local/bin/scripts/killproccess.sh", NULL };
+static const char *scanWifi[]       = { "bash", ".local/bin/scripts/wifi.sh", NULL };
+static const char *surfWeb[]        = { "bash", ".local/bin/scripts/surf.sh", NULL };
+static const char *searchGithub[]   = { "bash", ".local/bin/scripts/github.sh", NULL };
+static const char *powerPc[]        = { "bash", ".local/bin/scripts/power.sh", NULL };
+static const char *showTv[]         = { "bash", ".local/bin/scripts/tv.sh", NULL };
 
 static Keychord *keychords[] = {
        /* Keys        function        argument */

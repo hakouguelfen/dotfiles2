@@ -11,7 +11,7 @@ if [[ $volume == 0 || "$mute" == "[MUTED]" ]]; then
     dunstify -a "$scriptName" -t 1500 -i audio-volume-muted -h string:x-dunst-stack-tag:$msgTag "Volume muted"
 else
     dunstify -a "$scriptName" -t 1500 -h string:x-dunst-stack-tag:$msgTag -h int:value:"$volume" "Volume: ${volume}%" --icon=~/.local/share/icons/Colloid-grey/actions/16/player-volume.svg
-
 fi
 
-canberra-gtk-play -i audio-volume-change -d "$scriptName"
+pkill -RTMIN+10 dwmblocks
+#canberra-gtk-play -i audio-volume-change -d "$scriptName"
