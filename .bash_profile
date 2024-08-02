@@ -11,7 +11,7 @@ export LS_COLORS="$(vivid generate one-dark)"
 
 [ -f ~/.bashrc ] && . "$HOME"/.bashrc
 if [ "$(tty)" = "/dev/tty1" ]; then
-    exec Hyprland
+    exec dwm
 fi
 
 # >>> conda initialize >>>

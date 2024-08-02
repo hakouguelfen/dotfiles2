@@ -84,6 +84,7 @@ static const char *surfWeb[]        = { "bash", ".local/bin/scripts/surf.sh", NU
 static const char *searchGithub[]   = { "bash", ".local/bin/scripts/github.sh", NULL };
 static const char *powerPc[]        = { "bash", ".local/bin/scripts/power.sh", NULL };
 static const char *showTv[]         = { "bash", ".local/bin/scripts/tv.sh", NULL };
+static const char *toggleKeyboard[] = { "bash", ".local/bin/scripts/keyboard.sh", NULL };
 
 static Keychord *keychords[] = {
        /* Keys        function        argument */
@@ -116,7 +117,8 @@ static Keychord *keychords[] = {
        &((Keychord){2, {{MODKEY, XK_c}, {0, XK_g}},                spawn,          {.v = searchGithub } }),
        &((Keychord){2, {{MODKEY, XK_c}, {0, XK_p}},                spawn,          {.v = powerPc } }),
        &((Keychord){2, {{MODKEY, XK_c}, {0, XK_t}},                spawn,          {.v = showTv } }),
-       
+       &((Keychord){1, {{Mod1Mask|ShiftMask, XK_Return}},          spawn,          {.v = toggleKeyboard } }),
+
        &((Keychord){1, {{MODKEY|ShiftMask, XK_f}},                 fullscreen,     {0} }),
     /* &((Keychord){2, {{MODKEY, XK_e}, {MODKEY, XK_e}},                spawn,          {.v = termcmd } }),
        &((Keychord){1, {{MODKEY, XK_b}},                                togglebar,      {0} }),
