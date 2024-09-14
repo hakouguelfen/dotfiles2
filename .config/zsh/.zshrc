@@ -28,7 +28,7 @@ alias ll='lsd -lAh --group-directories-first'
 alias cls='clear'
 alias mkdir='mkdir -pv'
 alias cat='batcat'
-alias v='vim'
+alias v='nvim'
 
 alias grep='grep --color'
 alias rustbook='rustup doc --book'
@@ -40,3 +40,7 @@ source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.config/zsh/.zsh_prompt
 source $HOME/.config/zsh/.zprofile
 
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

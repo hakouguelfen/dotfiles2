@@ -68,8 +68,8 @@ static const char *increaseVol[]    = { "sh", ".config/dunst/scripts/vol.sh", "3
 static const char *decreaseVol[]    = { "sh", ".config/dunst/scripts/vol.sh", "3%-", NULL };
 static const char *muteVol[]        = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle", NULL };
 
-static const char *increaseLight[]  = { "brightnessctl", "set", "5%+", NULL };
-static const char *decreaseLight[]  = { "brightnessctl", "set", "5%-", NULL };
+static const char *increaseLight[]  = { "bash", ".local/bin/scripts/light.sh", "UP", NULL };
+static const char *decreaseLight[]  = { "bash", ".local/bin/scripts/light.sh", "DOWN", NULL };
 
 static const char *launchBrowser[]  = { "brave-browser", NULL };
 static const char *launchEditor[]   = { "emacsclient","-c", "-a", "emacs", NULL };
