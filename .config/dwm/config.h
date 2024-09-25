@@ -4,24 +4,26 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int gappx     = 5;        /* gaps between windows */
+static const unsigned int gappx     = 3;        /* gaps between windows */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "FiraCodeNerdFont-Bold:size=12" };
 static const char dmenufont[]       = "FiraCodeNerdFont-Bold:size=12";
-static const char col_gray1[]       = "#282c34";
-static const char col_gray2[]       = "#282c34";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#52565C";
+
+static const char col_fill[]        = "#282c34";
+static const char col_base[]        = "#ffffff";
+static const char col_muted[]       = "#414449";
+static const char col_accent[]      = "#1d59b2";
+
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeNorm] = { col_base, col_fill,   col_fill },
+	[SchemeSel]  = { col_base, col_muted,  col_accent  },
 };
 
 /* tagging */
-static const char *tags[] = { " ", " ", " ", " ", " ", " ", " ", " ", " " };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -66,7 +68,7 @@ static const char *roficmd[]  = { "rofi", "-show", "drun", NULL };
 
 static const char *increaseVol[]    = { "sh", ".config/dunst/scripts/vol.sh", "3%+", NULL };
 static const char *decreaseVol[]    = { "sh", ".config/dunst/scripts/vol.sh", "3%-", NULL };
-static const char *muteVol[]        = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle", NULL };
+static const char *muteVol[]        = { "sh", ".config/dunst/scripts/toggle.sh", NULL };
 
 static const char *increaseLight[]  = { "bash", ".local/bin/scripts/light.sh", "UP", NULL };
 static const char *decreaseLight[]  = { "bash", ".local/bin/scripts/light.sh", "DOWN", NULL };
@@ -105,7 +107,7 @@ static Keychord *keychords[] = {
        &((Keychord){1, {{0, XF86XK_AudioLowerVolume}},             spawn,          {.v = decreaseVol } }),
        &((Keychord){1, {{0, XF86XK_AudioMute}},                    spawn,          {.v = muteVol } }),
   
-       /* LIGHT */
+       /* Light */
        &((Keychord){1, {{0, XF86XK_MonBrightnessUp}},              spawn,          {.v = increaseLight } }),
        &((Keychord){1, {{0, XF86XK_MonBrightnessDown}},            spawn,          {.v = decreaseLight } }),
 
@@ -119,16 +121,18 @@ static Keychord *keychords[] = {
        &((Keychord){2, {{MODKEY, XK_c}, {0, XK_t}},                spawn,          {.v = showTv } }),
        &((Keychord){1, {{Mod1Mask|ShiftMask, XK_Return}},          spawn,          {.v = toggleKeyboard } }),
 
+       /* Managing Windows */
        &((Keychord){1, {{MODKEY|ShiftMask, XK_f}},                 fullscreen,     {0} }),
+       &((Keychord){1, {{MODKEY|ShiftMask, XK_h}},                 setmfact,       {.f = -0.05} }),
+       &((Keychord){1, {{MODKEY|ShiftMask, XK_l}},                 setmfact,       {.f = +0.05} }),
+       &((Keychord){1, {{MODKEY, XK_h}},                           focusstack,     {.i = -1 } }),
+       &((Keychord){1, {{MODKEY, XK_l}},                           focusstack,     {.i = +1 } }),
+       &((Keychord){1, {{MODKEY|ShiftMask, XK_z}},                 zoom,           {0} }),
+
     /* &((Keychord){2, {{MODKEY, XK_e}, {MODKEY, XK_e}},                spawn,          {.v = termcmd } }),
        &((Keychord){1, {{MODKEY, XK_b}},                                togglebar,      {0} }),
-       &((Keychord){1, {{MODKEY, XK_j}},                                focusstack,     {.i = +1 } }),
-       &((Keychord){1, {{MODKEY, XK_k}},                                focusstack,     {.i = -1 } }),
        &((Keychord){1, {{MODKEY, XK_i}},                                incnmaster,     {.i = +1 } }),
        &((Keychord){1, {{MODKEY, XK_d}},                                incnmaster,     {.i = -1 } }),
-       &((Keychord){1, {{MODKEY, XK_h}},                                setmfact,       {.f = -0.05} }),
-       &((Keychord){1, {{MODKEY, XK_l}},                                setmfact,       {.f = +0.05} }),
-       &((Keychord){1, {{MODKEY, XK_Return}},                           zoom,           {0} }),
        &((Keychord){1, {{MODKEY, XK_Tab}},                              view,           {0} }),
        &((Keychord){1, {{MODKEY, XK_t}},                                setlayout,      {.v = &layouts[0]} }),
        &((Keychord){1, {{MODKEY, XK_f}},                                setlayout,      {.v = &layouts[1]} }),

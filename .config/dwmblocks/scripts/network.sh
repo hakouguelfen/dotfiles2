@@ -1,9 +1,9 @@
 #!/bin/bash 
 
-net="$(cat /sys/class/net/w*/operstate)"
+net="$(cat /sys/class/net/wlp0s20f3/operstate)"
 
 if [[ "$net" == "up" ]]; then
-  echo "Connected   "
+  echo " "
 else
   echo "Disconnected 󰖪 "
 fi

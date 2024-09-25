@@ -8,7 +8,7 @@ export EDITOR="nvim"
 export HISTCONTROL=ignoreboth
 export LS_COLORS="$(vivid generate one-dark)"
 
-export $(dbus-launch)
+#export $(dbus-launch)
 
 export PATH=$HOME/.local/bin:$PATH
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64

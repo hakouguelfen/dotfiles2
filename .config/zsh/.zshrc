@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/hakou/.config/zsh/completions:"* ]]; then export FPATH="/home/hakou/.config/zsh/completions:$FPATH"; fi
 setopt autocd
 setopt PROMPT_SUBST
 
@@ -27,8 +29,10 @@ alias l='lsd --group-directories-first'
 alias ll='lsd -lAh --group-directories-first'
 alias cls='clear'
 alias mkdir='mkdir -pv'
-alias cat='batcat'
+alias cat='bat'
 alias v='nvim'
+
+alias download='yt-dlp -f bestvideo+bestaudio/best'
 
 alias grep='grep --color'
 alias rustbook='rustup doc --book'
@@ -44,3 +48,4 @@ source $HOME/.config/zsh/.zprofile
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+. "/home/hakou/.deno/env"
