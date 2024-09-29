@@ -6,9 +6,9 @@ display_volume_icon() {
     if [[ "$vol" -eq 0 ]]; then
         echo " "  # Muted icon
     elif (( vol <= 15 )); then
-        echo ""  # Low volume icon
+        echo " "  # Low volume icon
     elif (( vol <= 30 )); then
-        echo ""  # Medium volume icon
+        echo " "  # Medium volume icon
     else
         echo " "  # High volume icon
     fi
