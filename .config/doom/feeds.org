@@ -1,0 +1,17 @@
+#+TITLE: RSS Feeds
+#+AUTHOR: hakou guelfen
+
+* Blogs                                                              :elfeed:
+** Studies                                                           :usthb:
+*** Facebook                                                       :facebook:
+**** https://rss.app/feeds/XBoRBhcgaZZWUmnB.xml
+**** https://rss.app/feeds/vO76vQ2ncMwwqg8y.xml
+**** https://rss.app/feeds/SkxGFrI3zDP0LKL9.xml
+** Youtube :youtube:
+*** Software Development :dev:
+**** https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg
+**** https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA
+*** Movies and Tvshows :movies:
+**** https://www.youtube.com/feeds/videos.xml?channel_id=UCTFudzu0dUatBTpkMtK_Z8w
+*** Political :dz:
+**** https://www.youtube.com/feeds/videos.xml?channel_id=UC9Zh5y5BYdAQdt9CX2h2fOw

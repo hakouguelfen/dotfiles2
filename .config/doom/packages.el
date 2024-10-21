@@ -49,12 +49,16 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-(package! org-auto-tangle)
 (package! beacon)
 (package! csv-mode)
+(package! org-auto-tangle)
 (package! org-modern)
 (package! org-super-agenda)
 (package! olivetti)
+(package! elfeed-goodies)
+
+(package! elfeed-tube)
+(package! elfeed-tube-mpv)
 
 ;; (package! yaml-mode)
 

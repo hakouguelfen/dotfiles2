@@ -1,6 +1,5 @@
 source "$HOME"/.bash_prompt
-source /usr/share/git/completion/git-completion.bash
-source /usr/lib/git-core/git-sh-prompt
+source /usr/share/git-core/contrib/completion/git-prompt.sh
 
 shopt -s autocd
 shopt -s progcomp

@@ -7,6 +7,7 @@
 
 (beacon-mode 1)
 (setq confirm-kill-emacs nil)
+(setq +bidi-global-mode t)
 
 ;; (setq haskell-stylish-on-save t)
 ;; (add-hook 'before-save-hook #'+format/buffer nil t)
@@ -90,6 +91,41 @@
 
 (setq +latex-viewers '(zathura))
 (with-eval-after-load 'ox-latex)
+
+(require 'elfeed-goodies)
+(elfeed-goodies/setup)
+(setq elfeed-goodies/entry-pane-size 0.5)
+
+(evil-define-key 'normal elfeed-show-mode-map
+  (kbd "V") 'elfeed-tube-mpv
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+(evil-define-key 'normal elfeed-search-mode-map
+  (kbd "J") 'elfeed-goodies/split-show-next
+  (kbd "U") 'elfeed-update
+  (kbd "K") 'elfeed-goodies/split-show-prev)
+
+(use-package! elfeed-org
+  :after elfeed
+  :config
+  (elfeed-org)
+  (setq rmh-elfeed-org-files (list "~/.config/doom/feeds.org")))
+
+(use-package elfeed-tube
+  :ensure t
+  :after elfeed
+  :demand t
+  :config
+  ;; (setq elfeed-tube-auto-save-p nil) ; default value
+  ;; (setq elfeed-tube-auto-fetch-p t)  ; default value
+  (elfeed-tube-setup)
+
+  :bind (:map elfeed-show-mode-map
+         ("F" . elfeed-tube-fetch)
+         ([remap save-buffer] . elfeed-tube-save)
+         :map elfeed-search-mode-map
+         ("F" . elfeed-tube-fetch)
+         ([remap save-buffer] . elfeed-tube-save)))
 
 (map! :leader
       (:prefix ("o" . "Toggle")
