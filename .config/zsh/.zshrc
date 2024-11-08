@@ -1,5 +1,3 @@
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/home/hakou/.config/zsh/completions:"* ]]; then export FPATH="/home/hakou/.config/zsh/completions:$FPATH"; fi
 setopt autocd
 setopt PROMPT_SUBST
 
@@ -13,8 +11,8 @@ compinit
 bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=10000
+SAVEHIST=10000
 HISTFILE=~/.zsh_history
 setopt histignorealldups sharehistory
 
@@ -49,3 +47,8 @@ source $HOME/.config/zsh/.zprofile
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 . "/home/hakou/.deno/env"
+
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/hakou/.config/zsh/completions:"* ]]; then
+  export FPATH="/home/hakou/.config/zsh/completions:$FPATH";
+fi

@@ -1,9 +1,10 @@
-export PAGER="most"
 export PATH=$PATH:~/.local/bin/scripts
 export PATH=$PATH:~/.config/emacs/bin
 export PATH=$PATH:~/Android/Sdk/platform-tools/
 
-export MANPAGER="nvim +Man!"
+export MANPAGER="less -R --use-color -Dd+r -Du+b"
+# export PAGER="most"
+
 export EDITOR="nvim"
 export HISTCONTROL=ignoreboth
 export LS_COLORS="$(vivid generate one-dark)"

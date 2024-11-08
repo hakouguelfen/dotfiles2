@@ -92,7 +92,7 @@ static const char *toggleKeyboard[] = { "bash", ".local/bin/scripts/keyboard.sh"
 static Keychord *keychords[] = {
        /* Keys        function        argument */
        &((Keychord){1, {{MODKEY, XK_p}},                           spawn,          {.v = dmenucmd } }),
-       &((Keychord){1, {{MODKEY|ShiftMask, XK_l}},                 spawn,          {.v = lockScreen } }),
+       &((Keychord){1, {{MODKEY|ControlMask, XK_l}},               spawn,          {.v = lockScreen } }),
        &((Keychord){1, {{MODKEY, XK_Return}},                      spawn,          {.v = termcmd } }),
        &((Keychord){1, {{MODKEY, XK_space}},                       spawn,          {.v = roficmd } }),
        &((Keychord){1, {{MODKEY, XK_q}},                           killclient,          {0} }),

@@ -18,6 +18,7 @@
 - [[#transparency][TRANSPARENCY]]
 - [[#theme][THEME]]
 - [[#flutter][FLUTTER]]
+- [[#snakemake][SNAKEMAKE]]
 
 * DEFAULTS
 #+begin_src emacs-lisp
@@ -233,4 +234,8 @@ An RSS feed reader in emacs
       (:prefix ("m" . "prefix")
         :desc "flutter-run_prod"
         "f p" #'flutter-run-prod))
+#+end_src
+* SNAKEMAKE
+#+begin_src emacs-lisp
+(set-formatter! 'snakefmt '("snakefmt" "-") :modes '(snakemake-mode))
 #+end_src

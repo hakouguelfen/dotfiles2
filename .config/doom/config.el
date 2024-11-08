@@ -184,3 +184,5 @@
       (:prefix ("m" . "prefix")
         :desc "flutter-run_prod"
         "f p" #'flutter-run-prod))
+
+(set-formatter! 'snakefmt '("snakefmt" "-") :modes '(snakemake-mode))

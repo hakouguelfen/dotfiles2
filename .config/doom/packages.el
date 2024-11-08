@@ -59,6 +59,7 @@
 
 (package! elfeed-tube)
 (package! elfeed-tube-mpv)
+(package! snakemake-mode)
 
 ;; (package! yaml-mode)
 
