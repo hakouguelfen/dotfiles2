@@ -129,8 +129,8 @@ static const char *colorname[] = {
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 259;
-unsigned int defaultbg = 258;
+unsigned int defaultfg = 258;
+unsigned int defaultbg = 259;
 unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 
@@ -175,6 +175,7 @@ static uint forcemousemod = ShiftMask;
  */
 ResourcePref resources[] = {
 		{ "font",         STRING,  &font },
+		{ "fontalt0",     STRING,  &font2[0] },
 		{ "color0",       STRING,  &colorname[0] },
 		{ "color1",       STRING,  &colorname[1] },
 		{ "color2",       STRING,  &colorname[2] },
@@ -194,16 +195,16 @@ ResourcePref resources[] = {
 		{ "background",   STRING,  &colorname[258] },
 		{ "foreground",   STRING,  &colorname[259] },
 		{ "cursorColor",  STRING,  &colorname[256] },
-		{ "termname",     STRING,  &termname },
-		{ "shell",        STRING,  &shell },
-		{ "minlatency",   INTEGER, &minlatency },
-		{ "maxlatency",   INTEGER, &maxlatency },
-		{ "blinktimeout", INTEGER, &blinktimeout },
-		{ "bellvolume",   INTEGER, &bellvolume },
-		{ "tabspaces",    INTEGER, &tabspaces },
-		{ "borderpx",     INTEGER, &borderpx },
-		{ "cwscale",      FLOAT,   &cwscale },
-		{ "chscale",      FLOAT,   &chscale },
+		// { "termname",     STRING,  &termname },
+		// { "shell",        STRING,  &shell },
+		// { "minlatency",   INTEGER, &minlatency },
+		// { "maxlatency",   INTEGER, &maxlatency },
+		// { "blinktimeout", INTEGER, &blinktimeout },
+		// { "bellvolume",   INTEGER, &bellvolume },
+		// { "tabspaces",    INTEGER, &tabspaces },
+		// { "borderpx",     INTEGER, &borderpx },
+		// { "cwscale",      FLOAT,   &cwscale },
+		// { "chscale",      FLOAT,   &chscale },
 		// { "alpha",        FLOAT,   &alpha },
 		// { "alphaOffset",  FLOAT,   &alphaOffset },
 };
