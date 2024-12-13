@@ -1,6 +1,7 @@
 export PATH=$PATH:~/.local/bin/scripts
 export PATH=$PATH:~/.config/emacs/bin
 export PATH=$PATH:~/Android/Sdk/platform-tools/
+export PATH=$PATH:/usr/lib64/mpich/bin
 
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 # export PAGER="most"

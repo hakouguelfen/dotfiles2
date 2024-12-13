@@ -1,12 +1,52 @@
 /* See LICENSE file for copyright and license details. */
 
-/*
+/* DEFAULT FALLBACK CONFIG
  * appearance
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "Liberation Mono:pixelsize=18:antialias=true:autohint=true";
-static int borderpx = 2;
+static int borderpx = 7;
+/* default TERM value */
+char *termname = "st-256color";
+/* bg opacity */
+float alpha = 1;
+float alphaOffset = 0.0;
+/* Terminal colors (16 first used in escape sequence) */
+static const char *colorname[] = {
+	/* 8 normal colors */
+	"black",
+	"red3",
+	"green3",
+	"yellow3",
+	"blue2",
+	"magenta3",
+	"cyan3",
+	"gray90",
+	/* 8 bright colors */
+	"gray50",
+	"red",
+	"green",
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan",
+	"white",
+	[255] = 0,
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#cccccc",
+	"#555555",
+	"gray90", /* default foreground colour */
+	"black", /* default background colour */
+};
+/*
+ * Default colors (colorname index)
+ * foreground, background, cursor, reverse cursor
+ */
+unsigned int defaultfg = 259;
+unsigned int defaultbg = 258;
+unsigned int defaultcs = 256;
+static unsigned int defaultrcs = 257;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -19,7 +59,7 @@ static int borderpx = 2;
 static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
-char *scroll = NULL;
+char *scroll = "scroll";
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
 /* identification sequence returned in DA and DECID */
@@ -73,8 +113,6 @@ static unsigned int cursorthickness = 2;
  */
 static int bellvolume = 0;
 
-/* default TERM value */
-char *termname = "st-256color";
 
 /*
  * spaces per tab
@@ -93,46 +131,6 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-/* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
-
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"gray90", /* default foreground colour */
-	"black", /* default background colour */
-};
-
-
-/*
- * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
- */
-unsigned int defaultfg = 259;
-unsigned int defaultbg = 258;
-unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
@@ -204,8 +202,8 @@ ResourcePref resources[] = {
 		{ "borderpx",     INTEGER, &borderpx },
 		{ "cwscale",      FLOAT,   &cwscale },
 		{ "chscale",      FLOAT,   &chscale },
-		// { "alpha",        FLOAT,   &alpha },
-		// { "alphaOffset",  FLOAT,   &alphaOffset },
+		{ "alpha",        FLOAT,   &alpha },
+		{ "alphaOffset",  FLOAT,   &alphaOffset },
 };
 /*
  * Internal mouse shortcuts.
