@@ -13,7 +13,6 @@ bindkey -e
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.zsh_history
 setopt histignorealldups sharehistory
 
 ## auto complete with case sensetive and  menu for selection
@@ -46,7 +45,7 @@ source $HOME/.config/zsh/.zprofile
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-. "/home/hakou/.deno/env"
+. "/home/hakou/.config/deno/env"
 
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":/home/hakou/.config/zsh/completions:"* ]]; then

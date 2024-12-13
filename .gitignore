@@ -2,4 +2,4 @@
 .config/zsh/.zcompdump
 .config/nvim/lazy-lock.json
 .vim/.net*
-
+zsh/history/.zsh_history
