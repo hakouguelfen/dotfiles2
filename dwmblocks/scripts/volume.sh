@@ -14,10 +14,10 @@ display_volume_icon() {
     fi
 }
 
-headphone="$(pw-dump | jq -r '.[] | select(.id == 40) | .info.params.EnumRoute[] | select(.name == "analog-output-headphones") | .available')"
-
-if [[ $headphone == "no" ]]; then
-  display_volume_icon 
-else
+nodeName="node.name.*alsa_output.usb-Generic_AB13X_USB_Audio_20210926172016-00.analog-stereo"
+if pw-cli list-objects | grep -i "$nodeName" > /dev/null; then
   echo " "
+else
+  display_volume_icon 
 fi
+

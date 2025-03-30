@@ -11,8 +11,10 @@ compinit
 bindkey -e
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+export HISTFILE="$XDG_STATE_HOME"/zsh/history
 HISTSIZE=10000
 SAVEHIST=10000
+
 setopt histignorealldups sharehistory
 
 ## auto complete with case sensetive and  menu for selection

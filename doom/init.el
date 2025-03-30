@@ -157,7 +157,7 @@
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org +brain +dragndrop +gnuplot +hugo +jupyter)               ; organize your plain life in plain text
-       ;;php               ; perl's insecure younger brother
+       (php +lsp)               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        (python +lsp +pyright +conda)           ; beautiful is better than ugly

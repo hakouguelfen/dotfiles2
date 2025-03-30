@@ -1,8 +1,9 @@
 export PATH=$PATH:~/.local/bin/scripts
 export PATH=$PATH:~/.config/emacs/bin
-export PATH=$PATH:~/Android/Sdk/platform-tools/
+export PATH=$PATH:"$XDG_DATA_HOME"/android/Sdk/platform-tools/
 export PATH=$PATH:/usr/lib64/mpich/bin
 export PATH=$PATH:~/.local/share/cargo/bin
+export PATH="/home/hakou/.config/herd-lite/bin:$PATH"
 
 export PYTHON_HISTORY=~/.local/share/python/history
 
