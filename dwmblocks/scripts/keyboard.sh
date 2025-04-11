@@ -2,4 +2,9 @@
 
 keyboard=$(setxkbmap -query | grep "layout" | awk '{print $NF}')
 
-echo " $keyboard"
+
+if [[ "$keyboard" == "dz" ]]; then
+  echo " ⵣ"
+else
+  echo " $keyboard"
+fi
