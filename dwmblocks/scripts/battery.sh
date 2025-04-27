@@ -10,7 +10,7 @@ fi
 
 if (( $capacity < 15 )); then
   echo "${capacity}% 󱉞 "
-  dunstify -a "battery" -h string:x-dunst-stack-tag:"battery" -u critical "⚠️⚠️⚠️  battery low  ["${capacity}"%]"
+  dunstify -a "battery" -h string:x-dunst-stack-tag:"battery" -u critical "ⴱⴰⵜⵔⵉ ⵀⵎⵉⵔ ["${capacity}"%]"
 elif (( $capacity < 20 )); then
   echo " "
 elif (( $capacity < 40 )); then
