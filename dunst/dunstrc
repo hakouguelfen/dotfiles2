@@ -26,7 +26,7 @@
     width = (0, 600)
     height = (0, 400)
     # origin = center
-    offset = 10x50
+    offset = (10, 50)
     scale = 0
     notification_limit = 0
 
@@ -36,7 +36,7 @@
     progress_bar_height = 10
     progress_bar_frame_width = 0
     progress_bar_min_width = 150
-    progress_bar_corner_radius = 10
+    progress_bar_corner_radius = 5
     progress_bar_max_width = 300
 
 
@@ -84,7 +84,8 @@
     # idle_threshold = 120
 
     ### Text ###
-    font = FiraCode 12
+    # font = FiraCode 12
+    font = NotoSansTifinagh 14
     line_height = 2
 
     # Possible values are:
@@ -157,11 +158,11 @@
     # Recursive icon lookup. You can set a single theme, instead of having to
     # define all lookup paths.
     enable_recursive_icon_lookup = true
-    icon_theme = Colloid-grey
+    icon_theme = Colloid-Grey-Nord 
     icon_position = left
     min_icon_size = 48
     max_icon_size = 48
-    icon_path = /usr/share/icons/Colloid-grey
+    icon_path = ~/.local/share/icons/Colloid-Grey-Nord 
 
     ### History ###
     # Should a notification popped up from history be sticky or timeout
