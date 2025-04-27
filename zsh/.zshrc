@@ -30,6 +30,7 @@ alias cls='clear'
 alias mkdir='mkdir -pv'
 alias cat='bat'
 alias v='nvim'
+alias gitlog="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
 
 alias download='yt-dlp -f bestvideo+bestaudio/best'
 
