@@ -4,6 +4,8 @@
       doom-variable-pitch-font (font-spec :family "FiraCode Nerd Font" :size 18))
 
 (setq display-line-numbers-type t)
+(setq treemacs-position 'right
+      treemacs-width 45)
 
 (beacon-mode 1)
 (setq confirm-kill-emacs nil)
