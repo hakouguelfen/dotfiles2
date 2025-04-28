@@ -2,8 +2,7 @@
 
 # Use modern completion system
 zmodload zsh/complist
-autoload -U compinit && compinit
-autoload -U colors && colors
+autoload -Uz compinit
 compinit
 
 ## auto complete with case sensetive and  menu for selection
@@ -32,3 +31,4 @@ source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source $HOME/.config/zsh/.zsh_prompt
+source $HOME/.config/zsh/.zprofile
