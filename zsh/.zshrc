@@ -1,56 +1,34 @@
-setopt autocd
-setopt PROMPT_SUBST
-
-eval "$(zoxide init zsh)"
+[ -f "$XDG_CONFIG_HOME/shell/alias" ] && source "$XDG_CONFIG_HOME/shell/alias"
 
 # Use modern completion system
-autoload -Uz compinit
+zmodload zsh/complist
+autoload -U compinit && compinit
+autoload -U colors && colors
 compinit
-
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
-
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-export HISTFILE="$XDG_STATE_HOME"/zsh/history
-HISTSIZE=10000
-SAVEHIST=10000
-
-setopt histignorealldups sharehistory
 
 ## auto complete with case sensetive and  menu for selection
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
-# My Aliases
-alias ls='lsd --group-directories-first'
-alias l='lsd --group-directories-first'
-alias ll='lsd -lAh --group-directories-first'
-alias cls='clear'
-alias mkdir='mkdir -pv'
-alias cat='bat'
-alias v='nvim'
-alias gitlog="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
+## main opts
+setopt autocd
+setopt PROMPT_SUBST
+setopt histignorealldups sharehistory
 
-alias download='yt-dlp -f bestvideo+bestaudio/best'
+# Keep 1000000 lines of history within the shell and save it to ~/.local/state/zsh/history:
+HISTSIZE=1000000
+SAVEHIST=1000000
+HISTCONTROL=ignoreboth
+HISTFILE="$XDG_STATE_HOME"/zsh/history
 
-alias grep='grep --color'
-alias rustbook='rustup doc --book'
-#pandoc file.docx -o output.pdf --pdf-engine=weasyprint
+# Use emacs keybindings even if our EDITOR is set to vi
+bindkey -e
 
+eval "$(zoxide init zsh)"
+
+# autosuggestions
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source $HOME/.config/zsh/.zsh_prompt
-source $HOME/.config/zsh/.zprofile
-
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-. "/home/hakou/.config/deno/env"
-
-# Add deno completions to search path
-if [[ ":$FPATH:" != *":/home/hakou/.config/zsh/completions:"* ]]; then
-  export FPATH="/home/hakou/.config/zsh/completions:$FPATH";
-fi
