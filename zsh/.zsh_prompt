@@ -1,15 +1,12 @@
-source /usr/share/git-core/contrib/completion/git-prompt.sh
+autoload -Uz vcs_info
+setopt PROMPT_SUBST
 
-conda_env() {
-  echo "$CONDA_DEFAULT_ENV"
-}
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' formats '%b %m%u%c'  # Branch name (%b), misc (%m), unstaged (%u), staged (%c)
+zstyle ':vcs_info:git:*' actionformats '[%b|%a] %m%u%c'  # Add action (%a) for special states
+zstyle ':vcs_info:git:*' unstagedstr '%F{yellow}*'
+zstyle ':vcs_info:git:*' stagedstr '%F{red}+'
+precmd() { vcs_info }
 
-local top_left='%F{blue}%~'
-local bottom_left='%F{green}❯ %F{white}'
-
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWCOLORHINTS=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-
-PROMPT=$'$top_left %F{green}$(__git_ps1 "%s") \n$bottom_left'
-RPROMPT=$'%F{blue}$(conda_env)'
+PROMPT=$'%F{blue}%~ %F{green}${vcs_info_msg_0_} \n%F{green}❯ %F{white}'

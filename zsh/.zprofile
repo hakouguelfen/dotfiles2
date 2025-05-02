@@ -1,17 +1,33 @@
+# Editor and terminal settings
 export EDITOR="nvim"
+export TERM="tmux-256color"
+
+# Color settings
 export LS_COLORS="$(vivid generate one-dark)"
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
 
-export PATH=$PATH:~/.local/bin/scripts
-export PATH=$PATH:~/.config/emacs/bin
-export PATH=$PATH:"$XDG_DATA_HOME"/android/Sdk/platform-tools/
-export PATH=$PATH:/usr/lib64/mpich/bin
-export PATH=$PATH:~/.local/share/cargo/bin
-export PATH="/home/hakou/.config/herd-lite/bin:$PATH"
-export PATH=$PATH:/opt/flutter/bin
-
+# Tool-specific settings
 export PYTHON_HISTORY=~/.local/share/python/history
+export JAVA_HOME=/usr/lib/jvm/java-*-openjdk-amd64
 
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$PATH:/usr/lib/jvm/java-17-openjdk-amd64/bin
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+# PATH modifications
+path=(
+  $HOME/.local/bin
+  $HOME/.local/share/cargo/bin
+  $HOME/.config/herd-lite/bin
+  $HOME/.config/emacs/bin
+  "$XDG_DATA_HOME"/android/Sdk/platform-tools
+  /usr/lib64/mpich/bin
+  /opt/flutter/bin
+  $JAVA_HOME/bin
+  $path
+)
+typeset -U path
+
+# Source Rust environment
+[[ -f "$XDG_DATA_HOME/cargo/env" ]] && . "$XDG_DATA_HOME/cargo/env"
+
+# Start X server on tty1
+if [[ "$tty" = "/dev/tty1" && -z "$DISPLAY" && -x "$(command -v startx)" ]]; then
+  exec startx "$XDG_CONFIG_HOME/X11/xinitrc" || echo "Failed to start X server"
+fi
