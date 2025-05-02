@@ -1,9 +1,11 @@
 nitrogen --restore &
+emacs-gtk+x11 --daemon &
+
 dunst &
 udiskie &
-emacs --daemon &
 picom &
 dwmblocks &
 syncthing -no-browser &
+xrdb -load $XDG_CONFIG_HOME/X11/xresources 
 
 exec dwm
