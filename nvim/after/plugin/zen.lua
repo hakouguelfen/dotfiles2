@@ -3,7 +3,7 @@ local zen = require("zen-mode")
 zen.setup({
   window = {
     backdrop = 0.95, 
-    width = 120, 
+    width = 0.85, 
     height = 1, 
     options = {
       -- signcolumn = "no", -- disable signcolumn
@@ -12,7 +12,7 @@ zen.setup({
       -- cursorline = false, -- disable cursorline
       -- cursorcolumn = false, -- disable cursor column
       -- foldcolumn = "0", -- disable fold column
-      list = false, -- disable whitespace characters
+     list = false, -- disable whitespace characters
     },
   },
   plugins = {
@@ -22,11 +22,11 @@ zen.setup({
       showcmd = false, 
       laststatus = 0, 
     },
-    gitsigns = { enabled = false }, 
+    gitsigns = { enabled = true }, 
     tmux = { enabled = true }, 
     alacritty = {
       enabled = true,
-      font = "16", -- font size
+      font = "14", -- font size
     },
   },
 })
