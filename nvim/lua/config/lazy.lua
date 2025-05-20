@@ -21,7 +21,6 @@ local plugins = {
   'lewis6991/gitsigns.nvim',
   'numToStr/Comment.nvim',
   'folke/zen-mode.nvim',
-
   'neovim/nvim-lspconfig',
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
@@ -29,5 +28,4 @@ local plugins = {
   "hrsh7th/cmp-nvim-lsp",
   "L3MON4D3/LuaSnip"
 }
-
 require('lazy').setup(plugins, {})

@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 
 -- Insert mode
 vim.keymap.set('i', 'jk', '<ESC>')
-vim.keymap.set('i', 'kj', '<ESC>')
 --vim.keymap.set('i', '<C-E>', '<ESC>A')
 --vim.keymap.set('i', '<C-A>', '<ESC>I')
 
