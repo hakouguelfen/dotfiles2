@@ -1,3 +1,4 @@
-require "config.keymap"
-require "config.set"
-require "config.lazy"
+require("config.set")
+require("config.keymap")
+require("config.statusline")
+require("config.lazy")

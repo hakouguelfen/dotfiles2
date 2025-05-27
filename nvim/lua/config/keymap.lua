@@ -2,8 +2,6 @@ vim.g.mapleader = " "
 
 -- Insert mode
 vim.keymap.set('i', 'jk', '<ESC>')
---vim.keymap.set('i', '<C-E>', '<ESC>A')
---vim.keymap.set('i', '<C-A>', '<ESC>I')
 
 -- Normal mode
 vim.keymap.set('n', '<leader>op', ':NvimTreeToggle<cr>')
@@ -48,3 +46,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Auto Comment
+vim.keymap.set("v", "<M-;>", "gc", { remap = true, desc = "Comment selected lines" })
+-- Show Diagnostics
+vim.keymap.set('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')

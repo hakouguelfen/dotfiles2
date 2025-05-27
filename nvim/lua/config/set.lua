@@ -1,6 +1,7 @@
 local o           = vim.o
 local opt         = vim.opt
 
+
 vim.g.have_nerd_font = true
 
 o.laststatus      = 3
@@ -49,6 +50,7 @@ o.history         = 50
 o.splitright      = true
 o.splitbelow      = true
 
+o.statusline = "%!luaeval('Statusline.active()')"
 -----------------------------
 -- vim.opt
 -- Folding mechanism
@@ -67,3 +69,16 @@ opt.signcolumn    = 'yes'
 
 opt.completeopt   = {'menu', 'menuone', 'noselect', 'noinsert'}
 opt.shortmess:append('c')
+
+-- Neovim diagnostics
+vim.diagnostic.config({
+ signs = {
+   text = {
+     [vim.diagnostic.severity.ERROR] = '✘',
+     [vim.diagnostic.severity.WARN] = '▲',
+     [vim.diagnostic.severity.HINT] = '⚑',
+     [vim.diagnostic.severity.INFO] = '»',
+   },
+ },
+})
+
