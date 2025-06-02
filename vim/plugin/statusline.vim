@@ -25,7 +25,7 @@ function! MyStatusLine()
   let l:mode_part = Mode()
   let l:file_part = ' %F%#ErrorMsg#%m'
   let l:right_part = '%=%y %P %l:%c'
-  return l:mode_part . '%#Normal#' . l:file_part . l:right_part
+  return l:mode_part . '%#Normal#' . l:file_part . '%#Normal#' . l:right_part
 endfunction
 
 set laststatus=2

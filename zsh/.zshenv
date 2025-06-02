@@ -6,6 +6,16 @@ export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
 
 # Zsh configuration directory
 export ZDOTDIR="${ZDOTDIR:-$XDG_CONFIG_HOME/zsh}"
+export HISTFILE="$XDG_CACHE_HOME/zsh/history"
+export HISTSIZE=10000                   # Maximum events for internal history
+export SAVEHIST=10000                   # Maximum events in history file
+
+# Editor and terminal settings
+export EDITOR="nvim"
+export VISUAL="nvim"
+export TERM="tmux-256color"
+# export FZF_DEFAULT_OPTS="--bind 'enter:execute(nvim {} < /dev/tty)'"
+export FZF_DEFAULT_OPTS="--border=bold --border=rounded --margin=3% --color=dark"
 
 # Node.js
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"

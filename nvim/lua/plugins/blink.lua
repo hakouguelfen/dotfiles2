@@ -1,6 +1,8 @@
+-- blink can be replaced by vim.lsp.completion()
 return {
   {
     'saghen/blink.cmp',
+    enabled = true,
     dependencies = { 'rafamadriz/friendly-snippets' },
     version = '1.*',
     opts = {
@@ -12,7 +14,9 @@ return {
       appearance = {
         nerd_font_variant = 'mono'
       },
-      completion = { documentation = { auto_show = false } },
+      completion = {
+        documentation = { auto_show = false }
+      },
       fuzzy = { implementation = "prefer_rust_with_warning" },
       signature = { enabled = true }
     },

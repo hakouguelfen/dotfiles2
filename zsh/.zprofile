@@ -1,7 +1,3 @@
-# Editor and terminal settings
-export EDITOR="nvim"
-export TERM="tmux-256color"
-
 # Color settings
 export LS_COLORS="$(vivid generate one-dark)"
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
