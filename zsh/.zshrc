@@ -28,21 +28,17 @@ setopt SHARE_HISTORY           # Share history across sessions
 setopt autocd
 bindkey -e
 
-
-# ~~~~~~~~~~~~~~~~~~~~~~~ Functions ~~~~~~~~~~~~~~~~~~~~~~~
-function zsh_add_file(){
+# ~~~~~~~~~~~~~~~~~~~~~~~ Plugins ~~~~~~~~~~~~~~~~~~~~~~~
+function source_file(){
   [ -f "$1" ] && source "$1"
 }
-
-
-# ~~~~~~~~~~~~~~~~~~~~~~~ Plugins ~~~~~~~~~~~~~~~~~~~~~~~
 zsh_syntax_highlighting="$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 zsh_autosuggestions="$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-zsh_add_file "$XDG_CONFIG_HOME/shell/alias"
-zsh_add_file "$ZDOTDIR/.zsh_prompt"
-zsh_add_file "$ZDOTDIR/.zprofile"
-zsh_add_file "$zsh_autosuggestions"
-zsh_add_file "$zsh_syntax_highlighting"
+source_file "$XDG_CONFIG_HOME/shell/alias"
+source_file "$ZDOTDIR/.zsh_prompt"
+source_file "$ZDOTDIR/.zprofile"
+source_file "$zsh_autosuggestions"
+source_file "$zsh_syntax_highlighting"
 
 eval "$(zoxide init zsh)"
