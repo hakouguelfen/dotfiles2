@@ -4,14 +4,13 @@ vim.lsp.enable({
   "rust-analyzer",
   "ruff",
   "clangd",
-  -- "pyright",
-  -- "eslint"
+  "bashls"
 })
 
 -- Neovim diagnostics
 vim.diagnostic.config({
   -- virtual_lines = true,
-  -- virtual_text = true,
+  virtual_text = true,
   update_in_insert = false,
   severity_sort = true,
   float = {

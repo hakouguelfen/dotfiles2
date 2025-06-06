@@ -1,71 +1,70 @@
-local o              = vim.o
-local opt            = vim.opt
+local opt          = vim.opt
 
-vim.g.have_nerd_font = true
-
-o.laststatus         = 3
-
-o.termguicolors      = true
-o.timeoutlen         = 500
-o.updatetime         = 200
-o.scrolloff          = 4
+opt.termguicolors  = true
+opt.timeoutlen     = 300
+opt.updatetime     = 100
+opt.scrolloff      = 4
 
 -- Better editor UI
-o.number             = true
-o.numberwidth        = 1
-o.relativenumber     = true
-o.cursorline         = true
+opt.number         = true
+opt.relativenumber = true
+opt.cursorline     = true
 
 -- Better editing experience
-o.expandtab          = true
-o.smarttab           = true
-o.cindent            = true
-o.autoindent         = true
-o.wrap               = true
-o.textwidth          = 300
-o.tabstop            = 2
-o.shiftwidth         = 2
-o.softtabstop        = -1 -- If negative, shiftwidth value is used
-o.list               = true
-o.listchars          = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
--- o.listchars = 'eol:¬,space:·,lead: ,trail:·,nbsp:◇,tab:→-,extends:▸,precedes:◂,multispace:···⬝,leadmultispace:│   ,'
--- o.formatoptions = 'qrn1'
+opt.expandtab      = true
+opt.smarttab       = true
+opt.tabstop        = 2
+opt.shiftwidth     = 2
+opt.softtabstop    = -1
+opt.autoindent     = true
+opt.wrap           = true
+opt.list           = true
+opt.listchars      = 'trail:·,nbsp:◇,tab:→ ,extends:▸,precedes:◂'
 
 -- Makes neovim and host OS clipboard play nicely with each other
-o.clipboard          = 'unnamedplus'
+opt.clipboard      = 'unnamedplus'
 
--- Case insensitive searching UNLESS /C or capital in search
-o.ignorecase         = true
-o.smartcase          = true
+-- Search behavior
+-----------------------------
+opt.ignorecase     = true
+opt.smartcase      = true
+opt.hlsearch       = false
 
 -- Undo and backup options
-o.backup             = false
-o.writebackup        = false
-o.undofile           = true
-o.swapfile           = false
-o.history            = 50
+opt.backup         = false
+opt.writebackup    = false
+opt.swapfile       = false
+opt.undofile       = true
+opt.history        = 500
 
 -- Better buffer splitting
-o.splitright         = true
-o.splitbelow         = true
+opt.splitright     = true
+opt.splitbelow     = true
 
-o.statusline         = "%!luaeval('Statusline.active()')"
+-- Statusline
 -----------------------------
--- vim.opt
+opt.laststatus     = 3
+opt.statusline     = "%!luaeval('Statusline.active()')"
+opt.cmdheight      = 0
+
 -- Folding mechanism
 -----------------------------
-opt.fillchars        = { fold = " " }
-opt.foldmethod       = "expr"
-o.foldexpr           = 'v:lua.vim.lsp.foldexpr()'
-opt.foldenable       = false
-opt.foldlevel        = 99
+opt.foldexpr       = 'v:lua.vim.lsp.foldexpr()'
+opt.fillchars      = { fold = " " }
+opt.foldmethod     = "expr"
+opt.foldenable     = false
+opt.foldlevel      = 99
 
-opt.hlsearch         = false
-opt.incsearch        = true
+opt.completeopt    = { 'menu', 'menuone', 'noselect', 'noinsert', 'preview', 'popup' }
+opt.shortmess:append('cW')
 
-opt.showmode         = false
-opt.undofile         = true
-opt.signcolumn       = 'yes'
 
-opt.completeopt      = { 'menu', 'menuone', 'noselect', 'noinsert' }
-opt.shortmess:append('c')
+-- Netrw customisation
+-----------------------------
+vim.g.netrw_banner = 0
+vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 4
+vim.g.netrw_altv = 1
+vim.g.netrw_altfile = 1
+vim.g.netrw_winsize = 25
+vim.g.netrw_preview = 1

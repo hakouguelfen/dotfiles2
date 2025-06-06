@@ -2,12 +2,12 @@
 vim.keymap.set('i', 'jk', '<ESC>')
 
 -- Normal mode
-vim.keymap.set('n', '<leader>op', ':NvimTreeToggle<cr>')
-vim.keymap.set("n", "<leader>gg", ":Neogit<cr>")
+vim.keymap.set("n", "<leader>op", ":Vexplore<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bk", ":bdelete<cr>")
+vim.keymap.set("n", "<leader>bs", ":w<CR>")
+vim.keymap.set("n", "<leader>rr", ":so% <CR>")
 vim.keymap.set("n", "gt", ":bNext<cr>")
 vim.keymap.set("n", "gT", ":bprevious<cr>")
-vim.keymap.set("n", "<leader>bs", ":w<CR>")
 
 -- center page when scrolling
 vim.keymap.set('n', '<C-d>', '<C-d>zz')

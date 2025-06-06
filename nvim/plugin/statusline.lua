@@ -1,17 +1,15 @@
 local mode_info = {
-  n = { name = "NORMAL", color = "MiniStatuslineModeNormal" },
-  i = { name = "INSERT", color = "MiniStatuslineModeInsert" },
-  v = { name = "VISUAL", color = "MiniStatuslineModeVisual" },
-  V = { name = "VISUAL LINE", color = "MiniStatuslineModeVisual" },
-  [""] = { name = "VISUAL BLOCK", color = "MiniStatuslineModeVisual" },
-  c = { name = "COMMAND", color = "MiniStatuslineModeCommand" },
-  R = { name = "REPLACE", color = "MiniStatuslineModeReplace" },
+  n = "NORMAL",
+  i = "INSERT",
+  v = "VISUAL",
+  V = "V-LINE",
+  [""] = "V-BLOCK",
+  R = "REPLACE",
 }
-
 local function mode()
   local current = vim.api.nvim_get_mode().mode
-  local info = mode_info[current] or { name = "UNKNOWN", color = "MiniStatuslineModeOther" }
-  return string.format("%%#%s# %s ", info.color, info.name):upper()
+  local info = mode_info[current] or { "UNKNOWN" }
+  return string.format("%%#Visual# %s ", info):upper()
 end
 
 local function lsp()
@@ -33,39 +31,35 @@ local function lsp()
   local info = ""
 
   if count["errors"] ~= 0 then
-    errors = " %#LspDiagnosticsDefaultError# " .. count["errors"]
+    errors = " %#Error# " .. count["errors"]
   end
   if count["warnings"] ~= 0 then
-    warnings = " %#LspDiagnosticsDefaultWarning# " .. count["warnings"]
+    warnings = " %#WarningMsg# " .. count["warnings"]
   end
   if count["hints"] ~= 0 then
-    hints = " %#LspDiagnosticsDefaultHint#󰌵 " .. count["hints"]
+    hints = " %#Comment#󰌵 " .. count["hints"]
   end
   if count["info"] ~= 0 then
-    info = " %#LspDiagnosticsDefaultInformation# " .. count["info"]
+    info = " %#Identifier# " .. count["info"]
   end
-
   return errors .. warnings .. hints .. info .. "%#Normal#"
 end
 
+
 Statusline = {}
 Statusline.active = function()
-  local file_name = "%#Normal#%t"
+  local file_name = "%#Normal# %t"
   local modified = "%#ErrorMsg#%m"
-
-  local filetype = string.format(" %s ", vim.bo.filetype):upper()
-  local linecol = "%P %l:%c"
+  local filetype = string.format(" %s ", vim.bo.filetype)
+  local linecol = "%P %#Visual# %l:%c "
 
   return table.concat {
-    "%#Statusline#",
     mode(),
-    "%#Normal# ",
     file_name,
     modified,
     lsp(),
-    "%=%#StatusLineExtra#",
+    "%=",
     filetype,
     linecol
   }
 end
-

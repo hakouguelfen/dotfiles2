@@ -1,3 +1,11 @@
+-- Autocmd to map Tab to Enter in netrw buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+    vim.keymap.set("n", "<Tab>", "<CR>", { buffer = true, remap = true })
+  end,
+})
+
 -- Highlight the region on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
