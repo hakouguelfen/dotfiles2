@@ -30,4 +30,5 @@ endfunction
 
 set laststatus=2
 set statusline=%!MyStatusLine()
-
+set cmdheight=1
+set noshowmode
