@@ -1,3 +1,7 @@
+local bufmap = function(mode, lhs, rhs)
+  vim.keymap.set(mode, lhs, rhs)
+end
+
 -- Autocmd to map Tab to Enter in netrw buffers
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "netrw",
@@ -11,7 +15,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank({ higroup = 'Visual' })
+    vim.hl.on_yank({ higroup = 'Visual' })
   end,
 })
 
@@ -19,21 +23,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-    local bufmap = function(mode, lhs, rhs)
-      vim.keymap.set(mode, lhs, rhs)
-    end
 
-    -- bufmap('i', '<C-Space>', '<C-x><C-o>')
-    bufmap('i', '<C-Space>', '<cmd>lua vim.lsp.completion.get()<cr>)')
-    bufmap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>')
-    bufmap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>')
-    bufmap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
-    bufmap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
-    bufmap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
-    bufmap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>')
-    bufmap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
-    bufmap('n', '<leader>cr', '<cmd>lua vim.lsp.buf.rename()<cr>')
-    bufmap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+    bufmap('i', '<C-Space>', function() vim.lsp.completion.get() end)
+    bufmap('n', 'K', function() vim.lsp.buf.hover() end)
+    bufmap('n', 'gd', function() vim.lsp.buf.definition() end)
+    bufmap('n', 'gD', function() vim.lsp.buf.declaration() end)
+    bufmap('n', 'gi', function() vim.lsp.buf.implementation() end)
+    bufmap('n', 'go', function() vim.lsp.buf.type_definition() end)
+    bufmap('n', 'gr', function() vim.lsp.buf.references() end)
+    bufmap('n', '<C-k>', function() vim.lsp.buf.signature_help() end)
+    bufmap('n', '<leader>cr', function() vim.lsp.buf.rename() end)
+    bufmap('n', '<leader>ca', function() vim.lsp.buf.code_action() end)
 
     -- Auto-format ("lint") on save.
     if not client:supports_method('textDocument/willSaveWaitUntil')
@@ -47,8 +47,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
       })
     end
 
+    -- Enabel auto completion
+    -- if client:supports_method('textDocument/completion') then
+    --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+    -- end
+
+    -- Enabel inlay hints
     if client.server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+      vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
     end
   end,
 })

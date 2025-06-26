@@ -1,6 +1,5 @@
 local opt          = vim.opt
 
-opt.termguicolors  = true
 opt.timeoutlen     = 300
 opt.updatetime     = 100
 opt.scrolloff      = 4
@@ -58,13 +57,12 @@ opt.foldlevel      = 99
 opt.completeopt    = { 'menu', 'menuone', 'noselect', 'noinsert', 'preview', 'popup' }
 opt.shortmess:append('cW')
 
-
 -- Netrw customisation
 -----------------------------
-vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
+vim.g.netrw_banner       = 0
+vim.g.netrw_liststyle    = 3
 vim.g.netrw_browse_split = 4
-vim.g.netrw_altv = 1
-vim.g.netrw_altfile = 1
-vim.g.netrw_winsize = 25
-vim.g.netrw_preview = 1
+vim.g.netrw_altv         = 1
+vim.g.netrw_altfile      = 1
+vim.g.netrw_winsize      = 25
+vim.g.netrw_preview      = 1

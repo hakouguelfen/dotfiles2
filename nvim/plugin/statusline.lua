@@ -31,16 +31,16 @@ local function lsp()
   local info = ""
 
   if count["errors"] ~= 0 then
-    errors = " %#Error# " .. count["errors"]
+    errors = " %#DiagnosticError# " .. count["errors"]
   end
   if count["warnings"] ~= 0 then
-    warnings = " %#WarningMsg# " .. count["warnings"]
+    warnings = " %#DiagnosticWarn# " .. count["warnings"]
   end
   if count["hints"] ~= 0 then
-    hints = " %#Comment#󰌵 " .. count["hints"]
+    hints = " %#Diagnostichint#󰌵 " .. count["hints"]
   end
   if count["info"] ~= 0 then
-    info = " %#Identifier# " .. count["info"]
+    info = " %#DiagnosticInfo# " .. count["info"]
   end
   return errors .. warnings .. hints .. info .. "%#Normal#"
 end
@@ -48,7 +48,7 @@ end
 
 Statusline = {}
 Statusline.active = function()
-  local file_name = "%#Normal# %t"
+  local file_name = "%#Normal# %f"
   local modified = "%#ErrorMsg#%m"
   local filetype = string.format(" %s ", vim.bo.filetype)
   local linecol = "%P %#Visual# %l:%c "

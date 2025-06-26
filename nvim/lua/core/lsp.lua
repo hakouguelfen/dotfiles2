@@ -1,6 +1,7 @@
 vim.lsp.enable({
   "luals",
   "ts-ls",
+  "biome",
   "rust-analyzer",
   "ruff",
   "clangd",
