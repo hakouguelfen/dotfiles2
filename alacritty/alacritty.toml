@@ -1,26 +1,18 @@
 [window]
 opacity = 0.9
-blur=true
+blur = true
 
 [window.padding]
-x = 5
-y = 5
+x = 1
+y = 0
 
 [font]
-size = 10
-
-[font.glyph_offset]
-x = 0
-y = 0
+size = 9
 
 [font.normal]
 # family = "FiraCodeNerdFont"
 family = "JetBrainsMono"
 style = "SemiBold"
-
-# [font.normal]
-# family = "NotoSansTifinagh"
-# style = "Bold"
 
 [font.offset]
 x = 0
@@ -28,7 +20,6 @@ y = 0
 
 [colors]
 draw_bold_text_with_bright_colors = true
-
 # [colors.normal]
 # black = "0x282c34"
 # blue = "0x51afef"
@@ -38,7 +29,6 @@ draw_bold_text_with_bright_colors = true
 # red = "0xff6c6b"
 # white = "0xbbc2cf"
 # yellow = "0xecbe7b"
-#
 # [colors.primary]
 # background = "0x282c34"
 # foreground = "0xbbc2cf"

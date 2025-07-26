@@ -10,6 +10,7 @@
 (beacon-mode 1)
 (setq confirm-kill-emacs nil)
 (setq +bidi-global-mode t)
+(setq evil-escape-key-sequence "jk")
 
 ;; (setq haskell-stylish-on-save t)
 ;; (add-hook 'before-save-hook #'+format/buffer nil t)
@@ -188,3 +189,6 @@
         "f p" #'flutter-run-prod))
 
 (set-formatter! 'snakefmt '("snakefmt" "-") :modes '(snakemake-mode))
+
+(use-package lsp-biome
+    :vc (:url "https://github.com/cxa/lsp-biome"))

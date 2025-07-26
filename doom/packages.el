@@ -60,6 +60,8 @@
 (package! elfeed-tube)
 (package! elfeed-tube-mpv)
 (package! snakemake-mode)
+(package! lsp-biome
+  :recipe (:host github :repo "cxa/lsp-biome"))
 
 ;; (package! yaml-mode)
 

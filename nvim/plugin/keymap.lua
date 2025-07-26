@@ -2,7 +2,7 @@
 vim.keymap.set('i', 'jk', '<ESC>')
 
 -- Normal mode
-vim.keymap.set("n", "<leader>op", ":Vexplore<CR>", { silent = true })
+vim.keymap.set("n", "<leader>op", ":NvimTreeToggle<CR>", { silent = true })
 vim.keymap.set("n", "<leader>bk", ":bdelete<cr>")
 vim.keymap.set("n", "<leader>bs", ":w<CR>")
 vim.keymap.set("n", "<leader>rr", ":so% <CR>")
