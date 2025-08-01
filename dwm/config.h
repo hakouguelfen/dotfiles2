@@ -43,12 +43,7 @@ static const int resizehints =
 static const int lockfullscreen =
     1; /* 1 will force focus on the fullscreen window */
 
-static const Layout layouts[] = {
-    /* symbol     arrange function */
-    {"| monadtall |", tile}, /* first entry is default */
-    {"><>", NULL},           /* no layout function means floating behavior */
-    {"[M]", monocle},
-};
+static const Layout layouts[] = {};
 
 /* key definitions */
 #define MODKEY Mod4Mask
@@ -157,9 +152,6 @@ static Keychord *keychords[] = {
        &((Keychord){1, {{MODKEY, XK_d}}, incnmaster,     {.i = -1 } }),
        &((Keychord){1, {{MODKEY, XK_Tab}},                              view,
        {0} }),
-       &((Keychord){1, {{MODKEY, XK_t}}, setlayout,      {.v = &layouts[0]} }),
-       &((Keychord){1, {{MODKEY, XK_f}}, setlayout,      {.v = &layouts[1]} }),
-       &((Keychord){1, {{MODKEY, XK_m}}, setlayout,      {.v = &layouts[2]} }),
        &((Keychord){1, {{MODKEY, XK_space}}, setlayout,      {0} }),
        &((Keychord){1, {{MODKEY|ShiftMask, XK_space}}, togglefloating, {0} }),
        &((Keychord){1, {{MODKEY, XK_0}},                                view,
@@ -184,7 +176,6 @@ static Keychord *keychords[] = {
 static const Button buttons[] = {
     /* click                event mask      button          function argument */
     {ClkLtSymbol, 0, Button1, setlayout, {0}},
-    {ClkLtSymbol, 0, Button3, setlayout, {.v = &layouts[2]}},
     {ClkWinTitle, 0, Button2, zoom, {0}},
     {ClkStatusText, 0, Button2, spawn, {.v = termcmd}},
     {ClkClientWin, MODKEY, Button1, movemouse, {0}},
