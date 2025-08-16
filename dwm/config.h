@@ -43,7 +43,12 @@ static const int resizehints =
 static const int lockfullscreen =
     1; /* 1 will force focus on the fullscreen window */
 
-static const Layout layouts[] = {};
+static const Layout layouts[] = {
+    /* symbol     arrange function */
+    {"| monadtall |", tile}, /* first entry is default */
+    {"><>", NULL},           /* no layout function means floating behavior */
+    {"[M]", monocle},
+};
 
 /* key definitions */
 #define MODKEY Mod4Mask
