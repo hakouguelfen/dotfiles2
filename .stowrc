@@ -2,3 +2,7 @@
 --ignore=.stowrc
 --ignore=README.md
 --ignore=license
+--ignore=fuzzel
+--ignore=hypr
+--ignore=st
+--ignore=waybar

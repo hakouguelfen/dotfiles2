@@ -9,3 +9,11 @@ alias gitlog="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an
 alias download='yt-dlp -f bestvideo+bestaudio/best'
 alias grep='grep --color'
 alias rustbook='rustup doc --book'
+
+# ⵜⵎⴰⵣⵉⵖⵜ
+alias ⵍ=l
+alias ⵍⵍ=ll
+alias ⵙⴼⴼⴰ=clear
+alias ⴰⴼ=fd
+alias ⵙⴰⵡⴰ='mkdir -pv'
+alias ⵍⴰⵇⴰ=touch

@@ -5,8 +5,8 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' check-for-changes true
 zstyle ':vcs_info:git:*' formats '%b %m%u%c'  # Branch name (%b), misc (%m), unstaged (%u), staged (%c)
 zstyle ':vcs_info:git:*' actionformats '[%b|%a] %m%u%c'  # Add action (%a) for special states
-zstyle ':vcs_info:git:*' unstagedstr '%F{yellow}*'
-zstyle ':vcs_info:git:*' stagedstr '%F{red}+'
+zstyle ':vcs_info:git:*' unstagedstr '%F{red}*'
+zstyle ':vcs_info:git:*' stagedstr '%F{yellow}+'
 precmd() { vcs_info }
 
 PROMPT=$'%F{blue}%~ %F{green}${vcs_info_msg_0_} \n%F{green}❯ %F{white}'
