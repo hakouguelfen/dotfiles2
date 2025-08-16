@@ -41,4 +41,5 @@ source_file "$ZDOTDIR/.zprofile"
 source_file "$zsh_autosuggestions"
 source_file "$zsh_syntax_highlighting"
 
+eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
