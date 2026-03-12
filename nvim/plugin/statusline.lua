@@ -49,7 +49,7 @@ end
 Statusline = {}
 Statusline.active = function()
   local file_name = "%#Normal# %f"
-  local modified = "%#ErrorMsg#%m"
+  local modified = " %#ErrorMsg#%m"
   local filetype = string.format(" %s ", vim.bo.filetype)
   local linecol = "%P %#Visual# %l:%c "
 

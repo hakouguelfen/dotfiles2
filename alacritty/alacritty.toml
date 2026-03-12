@@ -11,6 +11,7 @@ size = 9
 
 [font.normal]
 # family = "FiraCodeNerdFont"
+# family = "NotoSansTifinagh"
 family = "JetBrainsMono"
 style = "SemiBold"
 
@@ -20,18 +21,6 @@ y = 0
 
 [colors]
 draw_bold_text_with_bright_colors = true
-# [colors.normal]
-# black = "0x282c34"
-# blue = "0x51afef"
-# cyan = "0x46d9ff"
-# green = "0x98be65"
-# magenta = "0xc678dd"
-# red = "0xff6c6b"
-# white = "0xbbc2cf"
-# yellow = "0xecbe7b"
-# [colors.primary]
-# background = "0x282c34"
-# foreground = "0xbbc2cf"
 
 [cursor]
 blink_interval = 750
@@ -41,3 +30,4 @@ unfocused_hollow = false
 [cursor.style]
 blinking = "Never"
 shape = "Underline"
+

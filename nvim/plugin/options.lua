@@ -8,6 +8,7 @@ opt.scrolloff      = 4
 opt.number         = true
 opt.relativenumber = true
 opt.cursorline     = true
+opt.winborder      = "rounded"
 
 -- Better editing experience
 opt.expandtab      = true
@@ -28,6 +29,7 @@ opt.clipboard      = 'unnamedplus'
 opt.ignorecase     = true
 opt.smartcase      = true
 opt.hlsearch       = false
+-- opt.path:append("**")
 
 -- Undo and backup options
 opt.backup         = false
@@ -66,3 +68,8 @@ vim.g.netrw_altv         = 1
 vim.g.netrw_altfile      = 1
 vim.g.netrw_winsize      = 25
 vim.g.netrw_preview      = 1
+vim.g.netrw_keepdir      = 1
+vim.g.netrw_list_hide    = [[^\..*\.swp$\|^\..*]]
+
+
+-- opt.autochdir = false

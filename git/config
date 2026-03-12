@@ -18,10 +18,10 @@
   defaultBranch = main
 
 [commit]
-  gpgSign = true
+	gpgsign = true
 
 [tag]
-  gpgSign = true
+	gpgsign = true
 
 [log]
   abbrevCommit = true

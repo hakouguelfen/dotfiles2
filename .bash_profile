@@ -30,3 +30,5 @@ unset __conda_setup
 # <<< conda initialize <<<
 . "$HOME/.cargo/env"
 . "/home/hakou/.deno/env"
+
+. "$HOME/.local/share/../bin/env"

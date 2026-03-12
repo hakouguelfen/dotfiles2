@@ -10,3 +10,4 @@ zstyle ':vcs_info:git:*' stagedstr '%F{yellow}+'
 precmd() { vcs_info }
 
 PROMPT=$'%F{blue}%~ %F{green}${vcs_info_msg_0_} \n%F{green}❯ %F{white}'
+

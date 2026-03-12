@@ -2,6 +2,17 @@ local bufmap = function(mode, lhs, rhs)
   vim.keymap.set(mode, lhs, rhs)
 end
 
+-- Autocmd to highlight some text blocks
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*",
+  callback = function()
+    vim.fn.matchadd("note", "NOTE")
+    vim.fn.matchadd("todo", "TODO")
+    vim.fn.matchadd("fixme", "FIXME")
+    vim.fn.matchadd("hack", "HACK")
+  end,
+})
+
 -- Autocmd to map Tab to Enter in netrw buffers
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "netrw",
@@ -10,12 +21,29 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Return to last edit position in a file
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end
+})
+
 -- Highlight the region on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
   callback = function()
     vim.hl.on_yank({ higroup = 'Visual' })
+  end,
+})
+
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
+  callback = function()
+    vim.diagnostic.setqflist({ open = false }) -- don’t force open
   end,
 })
 
@@ -48,13 +76,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     -- Enabel auto completion
-    -- if client:supports_method('textDocument/completion') then
-    --   vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-    -- end
+    if client:supports_method('textDocument/completion') then
+      vim.lsp.completion.enable(true, client.id, args.buf, {
+        autotrigger = true
+      })
+    end
 
     -- Enabel inlay hints
     if client.server_capabilities.inlayHintProvider then
-      vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
     end
   end,
 })

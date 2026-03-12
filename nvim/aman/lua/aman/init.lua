@@ -4,32 +4,20 @@ function M.setup()
   local colors = {
     bg = "NONE",
     fg = "#e0e0e0",
-    red = "#F45B69",
-    pink = "#ffb3c6",
-    orange = "#FFA07A",
-    green = "#84af4f",
 
-    indianRed = "#CD5C5C",
-    darkGreen = "#ecf39e",
-    brown = "#bc6c25",
 
-    brown1 = "#ede0d4",
-    brown2 = "#e6ccb2",
-    brown3 = "#ddb892",
-    brown4 = "#b08968",
-    brown5 = "#7f5539",
-    brown6 = "#9c6644",
+    blue = "#0077b6",   -- function
+    orange = "#ddb892", -- variable
+    green = "#84af4f",  -- strings
 
-    light_blue = "#00b4d8",
-    blue = "#2c7da0",
-    dark_blue = "#01497c",
+    basic = "#bfbab0",
+    text_2 = "#b56576", -- constants
 
-    text = "#cad2c5",
-
-    whitesmoke = "#B6B09F",
-    gray = "#545659",
+    gray = "#5c6773",
     light_gray = "#343537",
-    black = "#1a1a1a",
+
+    red = "#F45B69",
+    purple = "#c678dd",
   }
 
   local highlights = {
@@ -41,7 +29,6 @@ function M.setup()
     CursorLine = { bg = colors.light_gray },
     StatusLine = { bg = colors.bg },
 
-
     -- Git signs (if using gitsigns)
     GitSignsAdd = { fg = colors.green },
     GitSignsChange = { fg = colors.orange },
@@ -49,49 +36,31 @@ function M.setup()
 
     -- Matching elements
     MatchParen = { fg = colors.orange, bold = true },
-    Pmenu = { bg = colors.light_gray, fg = colors.text },
-    PmenuSel = { bg = colors.dark_blue, fg = colors.fg },
-
-
-    -- ["@typeParameter"] = { fg = colors.pink },
-    --
-    -- ["@label"] = { fg = colors.green },
-    -- ["@module"] = { fg = colors.green },
-    -- ["@attribute"] = { fg = colors.green },
-    --
-    -- ["@variable"] = { fg = colors.text },
-    -- ["@boolean"] = { fg = colors.orange },
-    --
-    -- ["@punctuation"] = { fg = colors.whitesmoke },
-    --
-    -- -- Add more semantic highlighting
-    -- ["@constructor"] = { fg = colors.light_blue },
-    -- ["@constant.builtin"] = { fg = colors.red },
-    -- ["@field"] = { fg = colors.text },
-    -- ["@property"] = { fg = colors.text },
-    -- ["@operator"] = { fg = colors.dark_blue },
-    -- ["@keyword.function"] = { fg = colors.dark_blue, bold = true },
-    -- ["@keyword.return"] = { fg = colors.red, bold = true },
-    -- ["@tag"] = { fg = colors.red },
-    -- ["@tag.attribute"] = { fg = colors.orange },
+    Pmenu = { bg = colors.light_gray, fg = colors.basic },
+    PmenuSel = { bg = colors.blue, fg = colors.fg },
 
     -- Syntax
-    Comment = { fg = colors.gray, italic = true, bold = true },
-    Delimiter = { fg = colors.green },
-    String = { fg = colors.green },
-    Constant = { fg = colors.orange, bold = true },
+    Comment = { bg = "#9CA3AF", fg = "#292524" },
+    String = { fg = colors.green, italic = true },
+    Number = { fg = colors.green },
+    Constant = { fg = colors.text_2, bold = true },
 
+    Delimiter = { fg = colors.gray, bold = true },
+    Special = { fg = colors.gray, bold = true },
 
-    Number = { fg = colors.orange },
+    Function = { fg = colors.blue, bold = true },
 
-    Method = { fg = colors.pink },
+    ["@variable"] = { fg = colors.orange },
 
-    Keyword = { fg = colors.brown },
-    ["@keyword"] = { fg = colors.brown, bold = true },
+    keyword = { fg = colors.basic, bold = true },
+    Identifier = { fg = colors.basic }, -- slightly darker
+    Statement = { fg = colors.basic },
+    Type = { fg = colors.basic },
 
-    Function = { fg = colors.brown6 },
-    Type = { fg = colors.brown3 },
-    ["@variable.parameter"] = { fg = colors.brown1 },
+    ["todo"] = { bg = colors.bg, fg = colors.orange, bold = true },
+    ["note"] = { bg = colors.bg, fg = colors.green, bold = true },
+    ["fixme"] = { bg = colors.bg, fg = colors.red, bold = true },
+    ["hack"] = { bg = colors.bg, fg = colors.purple, bold = true },
   }
 
   for group, opts in pairs(highlights) do

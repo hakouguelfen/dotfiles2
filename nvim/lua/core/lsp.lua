@@ -1,9 +1,16 @@
 vim.lsp.enable({
   "luals",
+  "rust-analyzer",
+  -- [PYTHON]
+  "ruff",
+  "ty",
+  -- "basedpyright",
+  -- [TS]
   "ts-ls",
   "biome",
-  "rust-analyzer",
-  "ruff",
+  "html",
+  "emmet",
+  --
   "clangd",
   "bashls"
 })

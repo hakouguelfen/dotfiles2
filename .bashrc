@@ -9,3 +9,5 @@ eval "$(zoxide init bash)"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+. "$HOME/.local/share/../bin/env"

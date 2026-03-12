@@ -45,8 +45,8 @@ static const int lockfullscreen =
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
-    {"| monadtall |", tile}, /* first entry is default */
-    {"><>", NULL},           /* no layout function means floating behavior */
+    {"| ⵣ ", tile}, /* first entry is default */
+    {"><>", NULL},  /* no layout function means floating behavior */
     {"[M]", monocle},
 };
 
@@ -102,6 +102,8 @@ static const char *searchGithub[] = {"bash", ".local/bin/scripts/github.sh",
                                      NULL};
 static const char *powerPc[] = {"bash", ".local/bin/scripts/power.sh", NULL};
 static const char *showTv[] = {"bash", ".local/bin/scripts/tv.sh", NULL};
+static const char *connectBluetooth[] = {
+    "bash", ".local/bin/scripts/bluetooth.sh", NULL};
 static const char *toggleKeyboard[] = {"bash", ".local/bin/scripts/keyboard.sh",
                                        NULL};
 
@@ -139,6 +141,9 @@ static Keychord *keychords[] = {
     &((Keychord){2, {{MODKEY, XK_c}, {0, XK_g}}, spawn, {.v = searchGithub}}),
     &((Keychord){2, {{MODKEY, XK_c}, {0, XK_p}}, spawn, {.v = powerPc}}),
     &((Keychord){2, {{MODKEY, XK_c}, {0, XK_t}}, spawn, {.v = showTv}}),
+    &((Keychord){
+        2, {{MODKEY, XK_c}, {0, XK_b}}, spawn, {.v = connectBluetooth}}),
+
     &((Keychord){
         1, {{Mod1Mask | ShiftMask, XK_Return}}, spawn, {.v = toggleKeyboard}}),
 

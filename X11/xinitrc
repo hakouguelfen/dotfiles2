@@ -1,11 +1,11 @@
 nitrogen --restore &
-emacs-gtk+x11 --daemon &
-
-dunst &
 udiskie &
 picom &
 dwmblocks &
 syncthing -no-browser &
-xrdb -load $XDG_CONFIG_HOME/X11/xresources 
+xrdb -load $XDG_CONFIG_HOME/X11/xresources &
+
+dbus-update-activation-environment --all &
+gnome-keyring-daemon --start --components=secrets &
 
 exec dwm
