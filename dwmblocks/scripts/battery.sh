@@ -3,24 +3,28 @@
 status="$(cat /sys/class/power_supply/BAT0/status)"
 capacity="$(cat /sys/class/power_supply/BAT0/capacity)"
 
+grey="#A9A9A9"
+green="#A6E3A1"
+amber="#F9E2AF"
+pink="#F38BA8"
+blue="#89B4FA"
+
+delim="  ^c$grey^|^d^ "
+
 if [[ "$status" == "Charging" ]]; then
-  echo "${capacity}%  "
+  echo "^c$blue^ ${capacity}%$delim"
   exit
 fi
 
-if (($capacity < 15)); then
-  echo "${capacity}% 󱉞 "
+if (($capacity < 20)); then
   # dunstify -a "battery" -h string:x-dunst-stack-tag:"battery" -u critical "ⴱⴰⵜⵔⵉ ⵀⵎⵉⵔ ["${capacity}"%]"
-elif (($capacity < 20)); then
-  echo " "
-elif (($capacity < 40)); then
-  echo " "
-elif (($capacity < 60)); then
-  echo " "
-elif (($capacity < 80)); then
-  echo " "
+  echo "^c$pink^ ${capacity}%$delim"
+
+elif (($capacity < 50)); then
+  echo "^c$amber^ ${capacity}%$delim"
+
 elif (($capacity < 100)); then
-  echo " "
+  echo "^c$green^ ${capacity}%$delim"
 else
-  echo " "
+  echo "^c$green^ ${capacity}%$delim"
 fi

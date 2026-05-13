@@ -1,4 +1,5 @@
-PREFIX  := /usr/local
+# PREFIX  := /usr/local
+PREFIX = $(HOME)/.local
 CC      := cc
 CFLAGS  := -pedantic -Wall -Wno-deprecated-declarations -Os
 LDFLAGS := -lX11
