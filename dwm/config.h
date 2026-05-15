@@ -81,10 +81,10 @@ static const char *roficmd[] = {"rofi", "-show", "drun", NULL};
 static const char *lockScreen[] = {"slock", NULL};
 
 // -- Controls
-static const char *muteVol[] = {"sh", ".config/dunst/scripts/toggle.sh", NULL};
-static const char *increaseVol[] = {"sh", ".config/dunst/scripts/vol.sh", "3%+",
+static const char *muteVol[] = {"sh", ".local/bin/scripts/toggle.sh", NULL};
+static const char *increaseVol[] = {"sh", ".local/bin/scripts/vol.sh", "3%+",
                                     NULL};
-static const char *decreaseVol[] = {"sh", ".config/dunst/scripts/vol.sh", "3%-",
+static const char *decreaseVol[] = {"sh", ".local/bin/scripts/vol.sh", "3%-",
                                     NULL};
 static const char *increaseLight[] = {"bash", ".local/bin/scripts/light.sh",
                                       "UP", NULL};
