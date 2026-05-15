@@ -1,4 +1,6 @@
-/* See LICENSE file for copyright and license details. */
+
+#include "/home/hakou/.config/dwm/themes/faw.h"
+
 #include <X11/XF86keysym.h>
 
 /* appearance */
@@ -14,10 +16,10 @@ static const char *fonts[] = {
     "Noto Sans CJK SC:size=10:antialias=true",
     "Noto Sans Tifinagh:size=10:antialias=true"};
 
-static const char col_fill[] = "#282c34";
-static const char col_base[] = "#ffffff";
-static const char col_muted[] = "#414449";
-static const char col_accent[] = "#1d59b2";
+// static const char col_fill[] = "#282c34";
+// static const char col_base[] = "#ffffff";
+// static const char col_muted[] = "#414449";
+// static const char col_accent[] = "#1d59b2";
 
 static const char *colors[][3] = {
     /*               fg         bg         border   */
@@ -81,10 +83,10 @@ static const char *roficmd[] = {"rofi", "-show", "drun", NULL};
 static const char *lockScreen[] = {"slock", NULL};
 
 // -- Controls
-static const char *muteVol[] = {"sh", ".local/bin/scripts/toggle.sh", NULL};
-static const char *increaseVol[] = {"sh", ".local/bin/scripts/vol.sh", "3%+",
+static const char *muteVol[] = {"bash", ".local/bin/scripts/toggle.sh", NULL};
+static const char *increaseVol[] = {"bash", ".local/bin/scripts/vol.sh", "3%+",
                                     NULL};
-static const char *decreaseVol[] = {"sh", ".local/bin/scripts/vol.sh", "3%-",
+static const char *decreaseVol[] = {"bash", ".local/bin/scripts/vol.sh", "3%-",
                                     NULL};
 static const char *increaseLight[] = {"bash", ".local/bin/scripts/light.sh",
                                       "UP", NULL};
@@ -142,11 +144,11 @@ static Keychord *keychords[] = {
         1, {{0, XF86XK_MonBrightnessDown}}, spawn, {.v = decreaseLight}}),
 
     // Music Controls
-    &((Keychord){1, {{MODKEY, XF86XK_AudioMute}}, spawn, {.v = muteMusic}}),
     &((Keychord){
         1, {{MODKEY, XF86XK_AudioRaiseVolume}}, spawn, {.v = nextMusic}}),
     &((Keychord){
         1, {{MODKEY, XF86XK_AudioLowerVolume}}, spawn, {.v = prevMusic}}),
+    &((Keychord){1, {{MODKEY, XF86XK_AudioMute}}, spawn, {.v = muteMusic}}),
 
     /* Custom scripts */
     &((Keychord){2, {{MODKEY, XK_c}, {0, XK_d}}, spawn, {.v = findDocs}}),
