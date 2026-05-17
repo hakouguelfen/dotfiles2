@@ -1,5 +1,5 @@
 
-#include "/home/hakou/.config/dwm/themes/faw.h"
+#include "/home/hakou/.config/suckless/themes/dwm/faw.h"
 
 #include <X11/XF86keysym.h>
 
@@ -11,15 +11,10 @@ static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
 static const char dmenufont[] = "FiraCodeNerdFont-Bold:size=12";
 static const char *fonts[] = {
-    "FiraCodeNerdFont-Bold:size=12",
+    "FiraCodeNerdFont-Bold:size=14",
     "Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
     "Noto Sans CJK SC:size=10:antialias=true",
     "Noto Sans Tifinagh:size=10:antialias=true"};
-
-// static const char col_fill[] = "#282c34";
-// static const char col_base[] = "#ffffff";
-// static const char col_muted[] = "#414449";
-// static const char col_accent[] = "#1d59b2";
 
 static const char *colors[][3] = {
     /*               fg         bg         border   */

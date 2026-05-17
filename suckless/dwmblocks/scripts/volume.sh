@@ -1,28 +1,23 @@
 #!/bin/env bash 
-
-grey="#6C7086"
-low="#CDD6F4"
-normal="#CBA6F7"
-loud="#F38BA8"
-
+source "$(dirname "${BASH_SOURCE[0]}")/constants.sh"
 
 display_volume_icon() {
     vol="$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print $NF * 100}')"
 
     if [[ "$vol" -eq 0 ]]; then
-        echo "^c$grey^ 0%"  # Muted icon
+        echo "^c$dimmed^ 0%"  # Muted icon
 
     elif (( vol <= 15 )); then
-        echo "^c$low^ ${vol}%"  # Low volume icon
+        echo "^c$yellow^ ${vol}%"  # Low volume icon
 
     elif (( vol <= 30 )); then
-        echo "^c$normal^ ${vol}%"  # Medium volume icon
+        echo "^c$orange^ ${vol}%"  # Medium volume icon
 
     elif (( vol <= 50 )); then
-        echo "^c$loud^ ${vol}%"  # Medium volume icon
+        echo "^c$red^ ${vol}%"  # Medium volume icon
 
     else
-        echo "^c$loud^  ${vol}%"  # High volume icon
+        echo "^c$red^  ${vol}%"  # High volume icon
     fi
 }
 

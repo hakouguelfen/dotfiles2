@@ -32,6 +32,7 @@ zstyle ':completion:*:dnf:*' verbose yes
 # ~~~~~~~~~~~~~~~~~~~~~~~ HISTORY ~~~~~~~~~~~~~~~~~~~~~~~
 HISTCONTROL=ignoreboth
 export LS_COLORS="$(vivid generate one-dark)"
+# export LS_COLORS="$(vivid generate one-light)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 

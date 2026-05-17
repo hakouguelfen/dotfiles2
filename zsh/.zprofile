@@ -1,7 +1,3 @@
-export JAVA_HOME=/usr/lib/jvm/java-24-openjdk/
-
-#   $JAVA_HOME/bin
-
 # Editor and terminal settings
 export EDITOR="nvim"
 export VISUAL="nvim"
@@ -25,11 +21,20 @@ export HISTFILE="$XDG_CACHE_HOME/zsh/history"
 export HISTSIZE=10000                   # Maximum events for internal history
 export SAVEHIST=10000                   # Maximum events in history file
 
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+
+# Clean ups
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+
 # Node.js
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
 export NPM_CONFIG_INIT_MODULE="$XDG_CONFIG_HOME/npm/config/npm-init.js"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 export NPM_CONFIG_TMP="$XDG_RUNTIME_DIR/npm"
+
+# Java
+export JAVA_HOME=/usr/lib/jvm/java-24-openjdk/
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 
 # Python
 export PYTHON_HISTORY=~/.local/share/python/history

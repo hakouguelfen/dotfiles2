@@ -32,3 +32,4 @@ unset __conda_setup
 . "/home/hakou/.deno/env"
 
 . "$HOME/.local/share/../bin/env"
+. "/home/hakou/.local/share/cargo/env"

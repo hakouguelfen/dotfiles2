@@ -1,5 +1,5 @@
 
-#include "/home/hakou/.config/dwm/themes/faw.h"
+#include "/home/hakou/.config/suckless/themes/dwm/salas.h"
 
 #include <X11/XF86keysym.h>
 

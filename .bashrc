@@ -11,3 +11,4 @@ eval "$(zoxide init bash)"
 [[ $- != *i* ]] && return
 
 . "$HOME/.local/share/../bin/env"
+. "/home/hakou/.local/share/cargo/env"

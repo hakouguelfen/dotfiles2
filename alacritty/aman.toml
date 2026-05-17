@@ -1,0 +1,26 @@
+# alacritty.toml
+
+[colors.primary]
+background = "#f5efe6"
+foreground = "#000000"
+
+[colors.cursor]
+cursor = "#6b5a52"
+text   = "#f5efe6"
+
+[colors.normal]
+red     = "#B00020"   # error
+green   = "#1B5E20"   # green.dark
+yellow  = "#8a6000"   # warning
+blue    = "#2B5DBA"   # blue.dark
+magenta = "#9637c7"   # purple
+cyan    = "#6BA3A3"   # hint
+
+[colors.bright]
+red     = "#e95e2b"   # help.constant — orange-red, distinct from error
+green   = "#2e7d32"   # slightly brighter green.dark
+yellow  = "#b87800"   # brighter warning
+blue    = "#1a4fa0"   # deeper blue for emphasis
+magenta = "#7b2fa8"   # deeper purple
+cyan    = "#4a8f8f"   # deeper teal
+
