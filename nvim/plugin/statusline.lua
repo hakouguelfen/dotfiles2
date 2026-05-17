@@ -50,6 +50,9 @@ Statusline = {}
 Statusline.active = function()
   local file_name = "%#Normal# %f"
   local modified = " %#ErrorMsg#%m"
+
+  local theme = string.format(" %%#StatusLineBold# %s %%#Normal#", vim.g.colors_name)
+
   local filetype = string.format(" %s ", vim.bo.filetype)
   local linecol = "%P %#Visual# %l:%c "
 
@@ -59,6 +62,7 @@ Statusline.active = function()
     modified,
     lsp(),
     "%=",
+    theme,
     filetype,
     linecol
   }

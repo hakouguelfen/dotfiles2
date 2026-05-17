@@ -12,7 +12,8 @@ vim.lsp.enable({
   "emmet",
   --
   "clangd",
-  "bashls"
+  "bashls",
+  "marksman",
 })
 
 -- Neovim diagnostics
