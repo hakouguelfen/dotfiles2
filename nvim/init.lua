@@ -1,9 +1,10 @@
 -- Neovim Confir
 --
+require("vim._core.ui2").enable({})
 
 vim.g.mapleader = " "
-require("core.lsp")
-require("core.lazy")
+require("lsp")
+require("plugins")
 
 vim.keymap.set("n", "<leader>tt", function()
   if vim.o.background == "dark" then
@@ -16,4 +17,4 @@ vim.keymap.set("n", "<leader>tt", function()
 end, { desc = "Toggle dark/light theme" })
 
 
-pcall(function() vim.cmd('colorscheme ⵜⴰⵍⵍⴰⵙⵜ') end)
+pcall(function() vim.cmd('colorscheme ⴼⴰⵡⵜ') end)
